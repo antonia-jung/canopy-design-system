@@ -1,0 +1,45 @@
+/* Spinner Ripple: zwei Ringe, die nacheinander nach außen auslaufen */
+.cp-spinner {
+  position: relative;
+  display: inline-block;
+  flex: none;
+  width: var(--cp-spinner-size, 16px);
+  height: var(--cp-spinner-size, 16px);
+  color: var(--cp-icon-action);
+}
+.cp-spinner[data-style='on-action'] {
+  color: var(--cp-icon-on-action);
+}
+.cp-spinner::before,
+.cp-spinner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: cp-ripple 1.2s cubic-bezier(0.2, 0, 0, 1) infinite;
+}
+.cp-spinner::after {
+  animation-delay: -0.6s;
+}
+@keyframes cp-ripple {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+[data-motion='reduced'] .cp-spinner::before,
+[data-motion='reduced'] .cp-spinner::after {
+  animation-duration: 2.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full']) .cp-spinner::before,
+  :root:not([data-motion='full']) .cp-spinner::after {
+    animation-duration: 2.4s;
+  }
+}

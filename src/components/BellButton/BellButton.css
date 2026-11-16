@@ -1,0 +1,74 @@
+.cp-bell {
+  position: relative;
+  display: inline-flex;
+}
+.cp-bell .cp-button > svg {
+  transform-origin: 50% 2px;
+}
+/* Glocke schwingt bei neuer Meldung dreimal aus */
+.cp-bell[data-ringing] .cp-button > svg {
+  animation: cp-bell-swing 640ms var(--cp-easing-standard);
+}
+@keyframes cp-bell-swing {
+  0% { transform: rotate(0); }
+  18% { transform: rotate(14deg); }
+  42% { transform: rotate(-9deg); }
+  66% { transform: rotate(4deg); }
+  100% { transform: rotate(0); }
+}
+
+.cp-bell__badge {
+  position: absolute;
+  top: -5px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--cp-surface-action);
+  color: var(--cp-text-on-action);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-caption);
+  line-height: 1;
+  font-weight: 600;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px var(--cp-surface-page);
+  transition:
+    transform var(--cp-duration-settle) var(--cp-easing-bounce-subtle),
+    opacity var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-bell__badge[data-type='dot'] {
+  min-width: 10px;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  top: -2px;
+  right: -1px;
+}
+.cp-bell__badge[data-hidden] {
+  transform: scale(0.3);
+  opacity: 0;
+}
+/* Badge poppt bei neuer Meldung auf */
+.cp-bell[data-ringing] .cp-bell__badge:not([data-hidden]) {
+  animation: cp-badge-pop calc(var(--cp-duration-settle) + 60ms) var(--cp-easing-bounce);
+}
+@keyframes cp-badge-pop {
+  0% { transform: scale(0.6); }
+  55% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+[data-motion='reduced'] .cp-bell[data-ringing] .cp-button > svg,
+[data-motion='reduced'] .cp-bell[data-ringing] .cp-bell__badge {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full']) .cp-bell[data-ringing] .cp-button > svg,
+  :root:not([data-motion='full']) .cp-bell[data-ringing] .cp-bell__badge {
+    animation: none;
+  }
+}

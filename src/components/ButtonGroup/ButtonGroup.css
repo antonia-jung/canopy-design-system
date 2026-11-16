@@ -1,0 +1,86 @@
+/*
+ * Button Group: erhabene, verbundene Leiste. Der aktive Button ist eingedrückt,
+ * wie eine gedrückte Taste (Gegenstück zum Segmented Control).
+ */
+.cp-button-group {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: var(--cp-radius-md);
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+  padding: 0;
+  width: fit-content;
+  justify-self: start;
+}
+.cp-button-group__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  min-width: 40px;
+  padding: 10px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    box-shadow var(--cp-duration-fast) var(--cp-easing-standard),
+    color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-button-group__item[data-icon-only] {
+  padding: 10px;
+}
+.cp-button-group__item > svg {
+  color: var(--cp-icon-default);
+}
+/* Trennlinie zwischen den Buttons */
+.cp-button-group__item + .cp-button-group__item::before {
+  content: '';
+  position: absolute;
+  left: -0.5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--cp-border-default);
+  opacity: 0.4;
+}
+.cp-button-group__item:first-child {
+  border-radius: var(--cp-radius-md) 0 0 var(--cp-radius-md);
+}
+.cp-button-group__item:last-child {
+  border-radius: 0 var(--cp-radius-md) var(--cp-radius-md) 0;
+}
+.cp-button-group__item[data-hovered] {
+  background: var(--cp-surface-hover);
+}
+.cp-button-group__item[data-selected],
+.cp-button-group__item[data-pressed] {
+  background: var(--cp-surface-soft-pressed);
+  box-shadow: var(--cp-shadow-soft-pressed);
+  color: var(--cp-text-action);
+}
+.cp-button-group__item[data-selected] > svg {
+  color: var(--cp-icon-action);
+}
+.cp-button-group__item[data-selected]::before,
+.cp-button-group__item[data-selected] + .cp-button-group__item::before {
+  opacity: 0;
+}
+.cp-button-group__item[data-focus-visible] {
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+  z-index: 1;
+}
+.cp-button-group__item[data-disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

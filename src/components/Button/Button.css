@@ -1,0 +1,172 @@
+/*
+ * Button und Button Icon
+ * Styles: default (Soft), inverse, outline, transparent
+ * Zustände kommen von React Aria als data-Attribute:
+ * data-hovered, data-pressed, data-focus-visible, data-disabled, data-pending
+ */
+.cp-button {
+  --_bg: transparent;
+  --_fg: var(--cp-text-action);
+  --_icon: var(--cp-icon-action);
+  --_border: transparent;
+  --_shadow: none;
+  --_layers: none;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 32px;
+  padding: 6px 12px;
+  border: 2px solid var(--_border);
+  border-radius: var(--cp-radius-pill);
+  background-color: var(--_bg);
+  background-image: var(--_layers);
+  box-shadow: var(--_shadow);
+  color: var(--_fg);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    box-shadow var(--cp-duration-fast) var(--cp-easing-standard),
+    color var(--cp-duration-fast) var(--cp-easing-standard),
+    border-color var(--cp-duration-fast) var(--cp-easing-standard),
+    transform var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-button > svg {
+  flex: none;
+  color: var(--_icon);
+}
+.cp-button__label {
+  display: inline-block;
+}
+/* Beim Mitgleiten der Breite nichts herausragen lassen, Icon-Buttons nie beschneiden */
+.cp-button:not([data-icon-only]) {
+  overflow: clip;
+  overflow-clip-margin: 4px;
+}
+
+/* Fokus-Ring: 2 px Ring, 2 px Abstand, außen */
+.cp-button[data-focus-visible] {
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+}
+
+/* Default (Soft): erhaben auf Seitenflächen */
+.cp-button[data-variant='default'] {
+  --_bg: var(--cp-surface-soft);
+  --_shadow: var(--cp-shadow-soft-raised);
+}
+.cp-button[data-variant='default'][data-hovered] {
+  --_bg: var(--cp-surface-hover);
+  --_shadow: var(--cp-shadow-soft-hover);
+}
+.cp-button[data-variant='default'][data-pressed] {
+  --_bg: var(--cp-surface-soft-pressed);
+  --_shadow: var(--cp-shadow-soft-pressed);
+}
+
+/* Inverse: Hauptaktion neben einem Default-Button */
+.cp-button[data-variant='inverse'] {
+  --_bg: var(--cp-surface-inverse);
+  --_fg: var(--cp-text-on-inverse);
+  --_icon: var(--cp-text-on-inverse);
+  --_border: var(--cp-border-inverse);
+}
+.cp-button[data-variant='inverse'][data-hovered] {
+  --_bg: var(--cp-surface-inverse-hover);
+}
+.cp-button[data-variant='inverse'][data-pressed] {
+  --_bg: var(--cp-surface-inverse-pressed);
+}
+
+/* Outline: Rand mit dezentem Verlauf, für Karten, Panels und grüne Flächen */
+.cp-button[data-variant='outline'] {
+  --_fg: var(--cp-outline-text);
+  --_icon: var(--cp-outline-icon);
+  --_border: var(--cp-outline-border);
+  --_layers:
+    linear-gradient(to bottom, color-mix(in srgb, var(--cp-outline-sheen) 90%, transparent), transparent 60%),
+    linear-gradient(to bottom, transparent 45%, color-mix(in srgb, var(--cp-outline-shade) 35%, transparent));
+}
+.cp-button[data-variant='outline'][data-hovered] {
+  --_bg: var(--cp-outline-hover);
+}
+.cp-button[data-variant='outline'][data-pressed] {
+  --_bg: var(--cp-outline-pressed);
+  --_layers: linear-gradient(to bottom, color-mix(in srgb, var(--cp-outline-shade) 50%, transparent), transparent 55%);
+}
+
+/* Transparent: Abbrechen, Schließen, Zurücksetzen */
+.cp-button[data-variant='transparent'] {
+  --_fg: var(--cp-outline-text);
+  --_icon: var(--cp-outline-icon);
+}
+.cp-button[data-variant='transparent'][data-hovered] {
+  --_bg: var(--cp-outline-hover);
+}
+.cp-button[data-variant='transparent'][data-pressed] {
+  --_bg: var(--cp-outline-pressed);
+}
+
+/* Rückmeldung direkt auf dem Button */
+.cp-button[data-status='success'] {
+  --_fg: var(--cp-text-success);
+  --_icon: var(--cp-icon-success);
+}
+.cp-button[data-status='error'] {
+  --_fg: var(--cp-text-error);
+  --_icon: var(--cp-icon-error);
+}
+.cp-button[data-variant='outline'][data-status='success'] {
+  --_border: var(--cp-border-success);
+}
+.cp-button[data-variant='outline'][data-status='error'] {
+  --_border: var(--cp-border-error);
+}
+.cp-button[data-variant='inverse'][data-status] {
+  --_fg: var(--cp-text-on-inverse);
+  --_icon: var(--cp-text-on-inverse);
+}
+
+/* Laden: Klicks gesperrt, Spinner statt Icon */
+.cp-button[data-pending] {
+  cursor: progress;
+}
+
+/* Deaktiviert */
+.cp-button[data-disabled] {
+  cursor: not-allowed;
+  opacity: 0.45;
+  --_shadow: none;
+  --_layers: none;
+}
+
+/* Status-Icon poppt beim Erscheinen leicht auf */
+.cp-button__status-icon {
+  animation: cp-pop calc(var(--cp-duration-settle) + 1ms) var(--cp-easing-bounce-subtle);
+}
+@keyframes cp-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Button Icon: nur ein Icon, gleiche Höhe wie der Button */
+.cp-button[data-icon-only] {
+  gap: 0;
+  padding: 6px 12px;
+}
+
+/* Spinner übernimmt im Button immer die Icon-Farbe des Styles */
+.cp-button .cp-spinner {
+  color: var(--_icon);
+}
