@@ -1,0 +1,32 @@
+/* Link: unterstrichen in Text/link, beim Hover in Text/action-hover */
+.cp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--cp-text-link);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: inherit;
+  line-height: 20px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-link > svg {
+  flex: none;
+}
+.cp-link[data-hovered] {
+  color: var(--cp-text-action-hover);
+}
+.cp-link[data-focus-visible] {
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+}
+.cp-link[data-disabled] {
+  color: var(--cp-text-disabled);
+  opacity: 0.45;
+  cursor: not-allowed;
+}

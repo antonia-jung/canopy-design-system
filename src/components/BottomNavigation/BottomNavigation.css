@@ -1,0 +1,76 @@
+/* Bottom Navigation: schwebende Leiste für Mobile mit 3 bis 5 Zielen */
+.cp-bottom-nav {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  border-radius: var(--cp-radius-pill);
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+}
+.cp-bottom-nav__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cp-bottom-nav .cp-blob {
+  background: var(--cp-surface-nav-selected);
+  border-radius: var(--cp-radius-pill);
+}
+.cp-bottom-nav__li {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+.cp-bottom-nav__item {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 56px;
+  min-width: 48px;
+  border-radius: var(--cp-radius-pill);
+  color: var(--cp-text-body);
+  font-size: var(--cp-font-size-caption);
+  line-height: 1.2;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-bottom-nav__item > svg {
+  color: var(--cp-icon-default);
+  transition: color var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-bottom-nav__item[data-selected],
+.cp-bottom-nav__item[data-selected] > svg {
+  color: var(--cp-text-on-action);
+}
+.cp-bottom-nav__item[data-selected] > svg {
+  color: var(--cp-icon-on-action);
+}
+.cp-bottom-nav__item[data-focus-visible] {
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+}
+.cp-bottom-nav__label {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cp-bottom-nav__label[data-hidden] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}

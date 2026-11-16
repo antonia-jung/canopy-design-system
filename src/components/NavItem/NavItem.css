@@ -1,0 +1,81 @@
+/*
+ * Nav Item: Eintrag in Header, Sidebar und Menü.
+ * Horizontal: Unterstrich-Indikator am gewählten Eintrag. Vertikal: erhabene Fläche.
+ */
+.cp-nav-item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 8px;
+  border-radius: var(--cp-radius-pill);
+  color: var(--cp-text-link);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-nav-item > svg {
+  flex: none;
+  color: var(--cp-icon-default);
+}
+.cp-nav-item[data-selected] {
+  color: var(--cp-text-action);
+}
+.cp-nav-item[data-selected] > svg {
+  color: var(--cp-icon-action);
+}
+.cp-nav-item[data-hovered] {
+  color: var(--cp-text-action);
+}
+/* Horizontal */
+.cp-nav-item[data-orientation='horizontal'][data-selected]::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--cp-surface-action);
+}
+.cp-nav-item[data-orientation='horizontal'][data-hovered]:not([data-in-blob]) {
+  background: var(--cp-surface-hover);
+}
+/* Vertikal: volle Breite */
+.cp-nav-item[data-orientation='vertical'] {
+  display: flex;
+  padding: 0 16px;
+}
+.cp-nav-item[data-orientation='vertical'][data-selected] {
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+}
+.cp-nav-item[data-orientation='vertical'][data-hovered] {
+  background: var(--cp-surface-hover);
+}
+.cp-nav-item[data-icon-only] {
+  justify-content: center;
+  padding: 0;
+  min-width: 40px;
+}
+.cp-nav-item[data-focus-visible] {
+  background: var(--cp-surface-hover);
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+}
+.cp-nav-item[data-disabled] {
+  color: var(--cp-text-disabled);
+  opacity: 0.45;
+  cursor: not-allowed;
+}

@@ -25,11 +25,13 @@ export interface BlobOptions {
   stiffness?: { lead: number; trail: number };
   /** Dämpfung: kleiner = mehr Nachfedern */
   damping?: { lead: number; trail: number };
+  /** Ohne Bewegung an das Ziel setzen, etwa wenn der Blob gerade unsichtbar ist */
+  teleport?: boolean;
 }
 
 type Rect = { x: number; y: number; w: number; h: number };
 
-export const blobDefaults: Required<BlobOptions> = {
+export const blobDefaults: Required<Omit<BlobOptions, 'teleport'>> = {
   axis: 'x',
   thread: 6,
   stick: 150,
@@ -103,8 +105,8 @@ export function useBlob(
 
     cancelAnimationFrame(frame.current);
 
-    // Erster Aufruf: ohne Bewegung an die Stelle setzen
-    if (!sim.current) {
+    // Erster Aufruf oder Sprung: ohne Bewegung an die Stelle setzen
+    if (!sim.current || o.teleport) {
       sim.current = { a: { x: tA, v: 0 }, b: { x: tB, v: 0 }, mid: { x: tMid, v: 0 }, thick: { x: tThick, v: 0 } };
       place(blob, to);
       return;

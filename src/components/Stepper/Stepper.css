@@ -1,0 +1,85 @@
+.cp-stepper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+}
+.cp-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cp-text-placeholder);
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  white-space: nowrap;
+}
+.cp-step__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: var(--cp-radius-pill);
+  border: 1px solid var(--cp-border-default);
+  background: transparent;
+  transition:
+    background-color var(--cp-duration-base) var(--cp-easing-standard),
+    border-color var(--cp-duration-base) var(--cp-easing-standard),
+    color var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-step[data-status='current'] {
+  color: var(--cp-text-heading);
+}
+.cp-step[data-status='current'] .cp-step__indicator {
+  background: var(--cp-surface-action);
+  border-color: transparent;
+  color: var(--cp-text-on-action);
+}
+.cp-step[data-status='complete'] {
+  color: var(--cp-text-body);
+}
+.cp-step[data-status='complete'] .cp-step__indicator {
+  background: var(--cp-surface-selected);
+  border-color: transparent;
+  color: var(--cp-icon-action);
+}
+.cp-step[data-status='error'] {
+  color: var(--cp-text-error);
+}
+.cp-step[data-status='error'] .cp-step__indicator {
+  background: var(--cp-surface-error);
+  border-color: var(--cp-border-error);
+  color: var(--cp-icon-error);
+}
+.cp-step__desc {
+  display: block;
+  font-size: var(--cp-font-size-caption);
+  color: var(--cp-text-caption);
+}
+.cp-stepper__connector {
+  flex: 1;
+  min-width: 16px;
+  height: 2px;
+  background: var(--cp-border-default);
+  transition: background-color var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-stepper__connector[data-done] {
+  background: var(--cp-surface-action);
+}
+@media (max-width: 767px) {
+  .cp-stepper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cp-stepper__connector {
+    width: 2px;
+    height: 16px;
+    min-width: 0;
+    flex: none;
+    margin-left: 15px;
+  }
+}
