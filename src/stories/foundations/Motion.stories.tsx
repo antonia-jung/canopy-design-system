@@ -107,7 +107,7 @@ export const TransitionStyles: StoryObj = {
   render: () => (
     <Page
       title="Motion"
-      intro="Zeiten und Kurven stehen als Tokens bereit. Zum Testen die Spuren anklicken. In der Toolbar lässt sich reduzierte Bewegung einschalten: Dann entfallen Dehnen und Bounce."
+      intro="Zeiten und Kurven stehen als Tokens bereit. Zum Testen die Spuren anklicken. In der Toolbar lässt sich reduzierte Bewegung einschalten: Dann entfallen Dehnen und Bounce, der Blob gleitet nur."
     >
       <Section title="Transition Styles">
         <div style={{ display: 'grid', gap: 32 }}>
@@ -117,7 +117,7 @@ export const TransitionStyles: StoryObj = {
           <div style={{ display: 'grid', gap: 8 }}>
             <strong className="cp-text-paragraph-medium" style={{ color: 'var(--cp-text-heading)' }}>blob</strong>
             <span className="cp-text-paragraph-small">
-              Dehnen (Duration/stretch, Easing/stretch), Einschnappen (Easing/snap) und Ausfedern (Duration/settle, Easing/bounce). Als Baustein <Code>useBlob</Code>.
+              Im Code bewegen zwei Federn die Kanten: Die vordere zieht sofort los, die hintere haftet kurz und schnappt hinterher. Die Dicke folgt der Dehnung, am Ziel federt der Blob leicht aus. Ein neuer Klick setzt nahtlos an der aktuellen Position an. Baustein <Code>useBlob</Code>, Einstellungen in <Code>blobDefaults</Code>. In Figma ist dieselbe Bewegung mit den Tokens Duration/stretch, snap und settle angenähert.
             </span>
             <BlobDemo />
           </div>

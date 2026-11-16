@@ -14,7 +14,7 @@ Design System von Antonia Jung: Tokens, React-Komponenten und Storybook. Entworf
 | `tokens/tokens.json` | Dieselben Tokens im W3C-Design-Tokens-Format |
 | `scripts/build-tokens.mjs` | Erzeugt daraus CSS-Variablen und die Token-Liste für Storybook |
 | `src/styles/` | `tokens.css` (erzeugt) und `base.css` |
-| `src/motion/` | Bewegungs-Bausteine, etwa `useBlob` für wandernde Indikatoren |
+| `src/motion/` | Bewegungs-Bausteine, etwa `useBlob` für wandernde Indikatoren (Feder-Simulation, Einstellungen in `blobDefaults`) |
 | `src/stories/` | Einführung und Foundation-Seiten |
 
 ## Tokens
