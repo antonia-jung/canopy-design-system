@@ -31,10 +31,10 @@ type Rect = { x: number; y: number; w: number; h: number };
 
 export const blobDefaults: Required<BlobOptions> = {
   axis: 'x',
-  thread: 10,
-  stick: 70,
-  stiffness: { lead: 420, trail: 260 },
-  damping: { lead: 30, trail: 26 },
+  thread: 6,
+  stick: 150,
+  stiffness: { lead: 520, trail: 900 },
+  damping: { lead: 38, trail: 44 },
 };
 
 export function measure(target: HTMLElement, container: HTMLElement): Rect {
@@ -157,8 +157,8 @@ export function useBlob(
       // Dicke folgt der Dehnung: lang = dünn, gestaucht = leicht bauchig
       const len = Math.abs(s.b.x - s.a.x);
       const ratio = len / Math.max(restLen, 1);
-      const want = Math.min(restThick * 1.12, Math.max(o.thread, restThick / Math.pow(Math.max(ratio, 0.6), 0.9)));
-      s.thick.x += (want - s.thick.x) * Math.min(1, dt * 30);
+      const want = Math.min(restThick * 1.15, Math.max(o.thread, restThick / Math.pow(Math.max(ratio, 0.7), 2)));
+      s.thick.x += (want - s.thick.x) * Math.min(1, dt * 40);
       const a = Math.min(s.a.x, s.b.x);
       const b = Math.max(s.a.x, s.b.x);
       place(blob, rect(a, b, s.mid.x, s.thick.x));
