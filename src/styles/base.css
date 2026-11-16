@@ -1,0 +1,43 @@
+/* Grundstile von Canopy. Setzt Schrift, Seitenfläche und den Fokus-Ring. */
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.cp-root,
+:root {
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  color: var(--cp-text-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--cp-surface-page);
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: var(--cp-line-height-paragraph-medium);
+}
+
+/* Fokus-Ring: 2 px Ring in Border/action, 2 px Abstand, außen liegend */
+:root {
+  --cp-focus-ring: 0 0 0 2px var(--cp-surface-page), 0 0 0 4px var(--cp-border-action);
+}
+
+.cp-focus-ring:focus-visible,
+[data-focus-visible].cp-focus-ring {
+  outline: none;
+  box-shadow: var(--cp-focus-ring);
+}
+
+/* Blob: gemeinsamer Indikator, der zwischen Optionen wandert (siehe useBlob) */
+.cp-blob {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform, width, height;
+  z-index: 0;
+}

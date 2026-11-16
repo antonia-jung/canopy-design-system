@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Einführung" />
+
+# Canopy Design System
+
+Canopy ist ein vollständiges Design System für Web-Oberflächen, entworfen in Figma und umgesetzt in React. Die Demo-Marke heißt **Lichtung**, die Primärfarbe ist ein tiefes Waldgrün.
+
+## Prinzipien
+
+- **Soft-Look:** Was man drückt, ist weich erhaben. Was man ausfüllt oder was einen Wert zeigt, ist eingedrückt.
+- **Warmes Papier:** Flächen basieren auf Sand. Grün ist für Aktionen, Links und Auswahl reserviert.
+- **Blob-Bewegung:** Wandernde Indikatoren bewegen sich wie eine zähe Flüssigkeit: haften, Faden ziehen, einschnappen.
+- **Barrierefreiheit:** Kontrast nach WCAG, sichtbarer Fokus, Tastaturbedienung, Zustände nie nur über Farbe.
+
+## Nutzung
+
+```bash
+npm install @canopy/design-system react-aria-components
+```
+
+```tsx
+import '@canopy/design-system/styles.css';
+```
+
+Das Theme steuert `data-theme="light"` oder `data-theme="dark"` auf einem Elternelement, etwa `<html>`. Ohne Angabe folgt Canopy der Systemeinstellung. Grüne Aktionsflächen setzen `data-context="on-action"`, damit Outline-Elemente darauf passend umschalten.
+
+## Tokens
+
+Alle Werte kommen aus den Figma-Variablen und werden mit `npm run tokens` zu CSS-Variablen mit dem Präfix `--cp-` erzeugt. Die Token-Datei im W3C-Format liegt unter `tokens/tokens.json`.
+
+## Toolbar
+
+Oben lassen sich **Theme** (Light, Dark) und **Bewegung** (voll, reduziert) umschalten, dazu die Viewports Mobile, Tablet und Desktop.
+
+Figma-Datei: [Design System 1](https://www.figma.com/design/f3PA63nCDbLrh1SyFOgrdk)
