@@ -23,8 +23,8 @@
 .cp-badge[data-intent='success'] { --_bg: var(--cp-icon-success); --_fg: var(--cp-text-on-intent); }
 .cp-badge[data-intent='info'] { --_bg: var(--cp-icon-information); --_fg: var(--cp-text-on-intent); }
 /* Warning: hell mit dunkler Zahl. Im Dark Mode bleibt der kräftige Ton, die Zahl wird dunkel (Kontrast). */
-.cp-badge[data-intent='warning'] { --_bg: var(--cp-border-warning); --_fg: var(--cp-text-heading); }
-[data-theme='dark'] .cp-badge[data-intent='warning'] { --_bg: var(--cp-icon-warning); --_fg: var(--cp-text-on-intent); }
+.cp-badge[data-intent='warning'] { --_bg: var(--cp-surface-warning); --_fg: var(--cp-text-heading); box-shadow: inset 0 0 0 1px var(--cp-border-warning); }
+[data-theme='dark'] .cp-badge[data-intent='warning'] { --_bg: var(--cp-icon-warning); --_fg: var(--cp-text-on-intent); box-shadow: none; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .cp-badge[data-intent='warning'] { --_bg: var(--cp-icon-warning); --_fg: var(--cp-text-on-intent); }
+  :root:not([data-theme='light']) .cp-badge[data-intent='warning'] { --_bg: var(--cp-icon-warning); --_fg: var(--cp-text-on-intent); box-shadow: none; }
 }
