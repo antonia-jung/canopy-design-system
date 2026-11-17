@@ -58,11 +58,11 @@
   display: flex;
   padding: 0 16px;
 }
-.cp-nav-item[data-orientation='vertical'][data-selected] {
+.cp-nav-item[data-orientation='vertical'][data-selected]:not([data-in-blob]) {
   background: var(--cp-surface-soft);
   box-shadow: var(--cp-shadow-soft-raised);
 }
-.cp-nav-item[data-orientation='vertical'][data-hovered] {
+.cp-nav-item[data-orientation='vertical'][data-hovered]:not([data-in-blob]) {
   background: var(--cp-surface-hover);
 }
 .cp-nav-item[data-icon-only] {

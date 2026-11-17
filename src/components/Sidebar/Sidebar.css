@@ -47,3 +47,37 @@
   width: 100%;
   background: var(--cp-border-default);
 }
+
+/* Blobs: Hover-Fläche und Auswahl wandern von Eintrag zu Eintrag */
+.cp-sidebar__items {
+  position: relative;
+}
+.cp-sidebar__items .cp-sidebar__nav {
+  position: relative;
+}
+.cp-sidebar__blob-hover {
+  background: var(--cp-surface-hover);
+  border-radius: var(--cp-radius-pill);
+  opacity: 0;
+  transition: opacity var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-sidebar__items[data-hovering] .cp-sidebar__blob-hover {
+  opacity: 1;
+}
+.cp-sidebar__blob-selected {
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+  border-radius: var(--cp-radius-pill);
+  opacity: 0;
+}
+.cp-sidebar__blob-selected[data-visible] {
+  opacity: 1;
+}
+/* Während sich die Breite ändert, stimmen die Blob-Maße nicht: die Einträge zeigen ihre Fläche selbst */
+.cp-sidebar[data-resizing] .cp-blob {
+  visibility: hidden;
+}
+.cp-sidebar[data-resizing] .cp-nav-item[data-orientation='vertical'][data-selected] {
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+}
