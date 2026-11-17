@@ -69,7 +69,7 @@
 }
 
 /* Hover */
-.cp-fieldbox:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+.cp-fieldbox:hover:not(:has(:disabled, input:read-only, textarea:read-only)):not(:focus-within) {
   --_bg: var(--cp-surface-hover);
   --_border: var(--cp-border-action-hover);
   --_text: var(--cp-text-on-action-hover-alt);
@@ -92,14 +92,14 @@
   --_icon: var(--cp-icon-success);
   --_ring: var(--cp-border-success);
 }
-.cp-fieldbox[data-validation='error']:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+.cp-fieldbox[data-validation='error']:hover:not(:has(:disabled, input:read-only, textarea:read-only)):not(:focus-within) {
   --_bg: var(--cp-surface-error-hover);
   --_border: var(--cp-border-error-hover);
   --_text: var(--cp-text-heading);
   --_ph: var(--cp-text-placeholder);
   --_icon: var(--cp-icon-error);
 }
-.cp-fieldbox[data-validation='success']:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+.cp-fieldbox[data-validation='success']:hover:not(:has(:disabled, input:read-only, textarea:read-only)):not(:focus-within) {
   --_bg: var(--cp-surface-success-hover);
   --_border: var(--cp-border-success-hover);
   --_text: var(--cp-text-heading);
@@ -108,7 +108,7 @@
 }
 
 /* Nur lesbar: keine Fläche, dünne Linie */
-.cp-fieldbox:has(:read-only:not(:disabled)) {
+.cp-fieldbox:has(:is(input, textarea):read-only:not(:disabled)) {
   --_bg: transparent;
   --_border: var(--cp-border-default);
   --_bw: 1px;
