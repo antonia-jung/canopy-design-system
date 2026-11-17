@@ -2068,7 +2068,7 @@ export const tokens = {
         "type": "C",
         "values": [
           "{Base/300}",
-          "{Primary/700}"
+          "{Primary/600}"
         ]
       },
       {
