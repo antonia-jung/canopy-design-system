@@ -135,13 +135,16 @@
   --_layers: linear-gradient(to bottom, color-mix(in srgb, var(--cp-outline-shade) 50%, transparent), transparent 55%);
 }
 
-/* Transparent: 1 px Rand, ohne Fläche. Erst beim Drücken kommt eine Fläche dazu. */
+/* Transparent: 1 px Rand, beim Hover und Drücken füllt sich die Fläche */
 .cp-button[data-variant='transparent'] {
   --_bw: 1px;
   --_fg: var(--cp-outline-text);
   --_icon: var(--cp-outline-icon);
   --_border: var(--cp-outline-border);
   --_ring: var(--cp-outline-border);
+}
+.cp-button[data-variant='transparent'][data-hovered] {
+  --_bg: var(--cp-outline-hover);
 }
 .cp-button[data-variant='transparent'][data-pressed] {
   --_bg: var(--cp-outline-pressed);
