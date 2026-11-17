@@ -65,3 +65,6 @@ export { ContactPattern, type ContactPatternProps, type ContactValues } from './
 export { SearchPattern, type SearchPatternProps, type SearchItem } from './patterns/Search/SearchPattern';
 export { GalleryPattern, type GalleryPatternProps, type GalleryItem } from './patterns/Gallery/GalleryPattern';
 export { DataPagePattern, type DataPagePatternProps, type DataRow } from './patterns/DataPage/DataPagePattern';
+export { LandingPage, type LandingPageProps, type LandingProject } from './templates/LandingPage';
+export { ProjectDetail, type ProjectDetailProps } from './templates/ProjectDetail';
+export { ContactPage, type ContactPageProps } from './templates/ContactPage';
