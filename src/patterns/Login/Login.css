@@ -4,7 +4,7 @@
 .cp-login__heading { display: flex; flex-direction: column; gap: 16px; }
 .cp-login__title { margin: 0; color: var(--cp-text-heading); font-family: var(--cp-font-family-heading), system-ui, sans-serif; font-size: 28px; font-weight: var(--cp-font-weight-bold); line-height: 1.2; }
 .cp-login__description { margin: 0; font-size: var(--cp-font-size-paragraph-medium); line-height: 1.5; }
-.cp-login__options { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.cp-login__options { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
 .cp-login__footer { margin: 0; display: flex; justify-content: center; gap: 8px; font-size: var(--cp-font-size-paragraph-small); }
 @container cp (max-width: 767px) {
   .cp-login { padding: 24px 16px; }
