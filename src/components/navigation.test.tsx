@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Link } from './Link/Link';
@@ -64,5 +64,38 @@ describe('Navigation', () => {
     await userEvent.click(screen.getByRole('button', { name: 'Seitenleiste einklappen' }));
     expect(screen.getByRole('link', { name: 'Übersicht' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Seitenleiste ausklappen' })).toBeInTheDocument();
+  });
+
+  it('Sidebar: Klick wählt einen Eintrag', async () => {
+    const onChange = vi.fn();
+    render(
+      <Sidebar
+        logo="L"
+        currentId="h"
+        onCurrentChange={onChange}
+        items={[
+          { id: 'h', label: 'Übersicht', href: '#', icon: 'home' },
+          { id: 'p', label: 'Projekte', href: '#', icon: 'folder' },
+        ]}
+      />,
+    );
+    await userEvent.click(screen.getByRole('link', { name: 'Projekte' }));
+    expect(screen.getByRole('link', { name: 'Projekte' })).toHaveAttribute('aria-current', 'page');
+    expect(screen.getByRole('link', { name: 'Übersicht' })).not.toHaveAttribute('aria-current');
+    expect(onChange).toHaveBeenCalledWith('p');
+  });
+
+  it('Bottom Navigation: Klick wählt einen Eintrag', async () => {
+    render(
+      <BottomNavigation
+        selectedId="a"
+        items={[
+          { id: 'a', label: 'Start', href: '#', icon: 'home' },
+          { id: 'b', label: 'Suche', href: '#', icon: 'search' },
+        ]}
+      />,
+    );
+    await userEvent.click(screen.getByRole('link', { name: 'Suche' }));
+    expect(screen.getByRole('link', { name: 'Suche' })).toHaveAttribute('aria-current', 'page');
   });
 });

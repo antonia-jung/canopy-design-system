@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavItem } from '../NavItem/NavItem';
 import { useBlob } from '../../motion/useBlob';
 import './NavList.css';
@@ -13,6 +13,8 @@ export interface NavListProps {
   items: NavListItem[];
   /** id des aktuellen Eintrags */
   currentId?: string;
+  /** Wird aufgerufen, wenn ein Eintrag gewählt wird. Die Liste führt die Markierung selbst nach. */
+  onCurrentChange?: (id: string) => void;
   'aria-label'?: string;
   /** Hover-Fläche wandert als Blob zwischen den Einträgen. Nur für den Header gedacht. */
   blob?: boolean;
@@ -22,7 +24,9 @@ export interface NavListProps {
  * Horizontale Navigation aus Nav Items. Mit blob wandert die Hover-Fläche beim Hover
  * und beim Tastaturfokus von Eintrag zu Eintrag, so im Header. Ohne blob hat jeder Eintrag seine eigene Fläche.
  */
-export function NavList({ items, currentId, 'aria-label': label = 'Navigation', blob: withBlob = false }: NavListProps) {
+export function NavList({ items, currentId, onCurrentChange, 'aria-label': label = 'Navigation', blob: withBlob = false }: NavListProps) {
+  const [current, setCurrent] = useState(currentId);
+  useEffect(() => setCurrent(currentId), [currentId]);
   const [hover, setHover] = useState<number | null>(null);
   const nav = useRef<HTMLDivElement>(null);
   const blob = useRef<HTMLSpanElement>(null);
@@ -53,7 +57,11 @@ export function NavList({ items, currentId, 'aria-label': label = 'Navigation', 
               refs.current[i] = el;
             }}
             href={it.href}
-            isSelected={it.id === currentId}
+            isSelected={it.id === current}
+            onPress={() => {
+              setCurrent(it.id);
+              onCurrentChange?.(it.id);
+            }}
             inBlob={withBlob}
             onHoverStart={() => setHover(i)}
             onFocus={() => setHover(i)}

@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from 'react';
+import { useEffect, useId, useState, type ReactNode } from 'react';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { NavItem } from '../NavItem/NavItem';
 import { NavList } from '../NavList/NavList';
@@ -27,6 +27,8 @@ export interface HeaderProps {
  */
 export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-label': label = 'Hauptnavigation' }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [current, setCurrent] = useState(currentId);
+  useEffect(() => setCurrent(currentId), [currentId]);
   const menuId = useId();
   return (
     <div className="cp-container">
@@ -36,7 +38,7 @@ export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-l
           {logo}
         </a>
         <div className="cp-header__nav">
-          <NavList blob items={items} currentId={currentId} aria-label={label} />
+          <NavList blob items={items} currentId={current} onCurrentChange={setCurrent} aria-label={label} />
         </div>
         <div className="cp-header__spacer" />
         {action && <div className="cp-header__action">{action}</div>}
@@ -52,7 +54,7 @@ export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-l
       </div>
       <nav id={menuId} className="cp-header__menu" aria-label={`${label} (Menü)`} hidden={!menuOpen}>
         {items.map((it) => (
-          <NavItem key={it.id} href={it.href} orientation="vertical" isSelected={it.id === currentId}>
+          <NavItem key={it.id} href={it.href} orientation="vertical" isSelected={it.id === current} onPress={() => setCurrent(it.id)}>
             {it.label}
           </NavItem>
         ))}

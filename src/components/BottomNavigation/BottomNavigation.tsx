@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-aria-components';
 import { Icon, type IconName } from '../Icon/Icon';
 import { useBlob } from '../../motion/useBlob';
@@ -15,6 +15,8 @@ export interface BottomNavigationProps {
   /** Drei bis fünf Ziele */
   items: BottomNavItem[];
   selectedId: string;
+  /** Wird aufgerufen, wenn ein Eintrag gewählt wird. Die Leiste führt die Markierung selbst nach. */
+  onSelectedChange?: (id: string) => void;
   /**
    * always: Labels immer sichtbar (empfohlen).
    * selected: nur am gewählten Eintrag.
@@ -25,11 +27,13 @@ export interface BottomNavigationProps {
 }
 
 /** Hauptnavigation für Mobile. Die Markierung wandert als Blob zum gewählten Eintrag. */
-export function BottomNavigation({ items, selectedId, labels = 'always', 'aria-label': label = 'Hauptnavigation' }: BottomNavigationProps) {
+export function BottomNavigation({ items, selectedId, onSelectedChange, labels = 'always', 'aria-label': label = 'Hauptnavigation' }: BottomNavigationProps) {
   const list = useRef<HTMLDivElement>(null);
   const blob = useRef<HTMLSpanElement>(null);
   const refs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const index = Math.max(0, items.findIndex((i) => i.id === selectedId));
+  const [selected_, setSelected] = useState(selectedId);
+  useEffect(() => setSelected(selectedId), [selectedId]);
+  const index = Math.max(0, items.findIndex((i) => i.id === selected_));
   useBlob(blob, list, () => refs.current[index] ?? null, index);
 
   return (
@@ -47,6 +51,10 @@ export function BottomNavigation({ items, selectedId, labels = 'always', 'aria-l
                   refs.current[i] = el;
                 }}
                 href={it.href}
+                onPress={() => {
+                  setSelected(it.id);
+                  onSelectedChange?.(it.id);
+                }}
                 className="cp-bottom-nav__item"
                 aria-current={selected ? 'page' : undefined}
                 data-selected={selected || undefined}

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { ButtonIcon } from '../ButtonIcon/ButtonIcon';
 import { NavItem } from '../NavItem/NavItem';
 import type { IconName } from '../Icon/Icon';
@@ -14,7 +14,10 @@ export interface SidebarItem {
 export interface SidebarProps {
   logo: ReactNode;
   items: SidebarItem[];
+  /** id des aktuellen Eintrags. Ein Klick auf einen Eintrag setzt ihn selbst, ohne dass die Seite ihn nachführen muss. */
   currentId?: string;
+  /** Wird aufgerufen, wenn ein Eintrag gewählt wird */
+  onCurrentChange?: (id: string) => void;
   /** Bereich unten, etwa Avatar und Name */
   footer?: ReactNode;
   defaultCollapsed?: boolean;
@@ -22,8 +25,10 @@ export interface SidebarProps {
 }
 
 /** Seitliche Navigation für Bereiche mit vielen Zielen. Eingeklappt zeigt sie nur Icons. */
-export function Sidebar({ logo, items, currentId, footer, defaultCollapsed = false, 'aria-label': label = 'Seitenleiste' }: SidebarProps) {
+export function Sidebar({ logo, items, currentId, onCurrentChange, footer, defaultCollapsed = false, 'aria-label': label = 'Seitenleiste' }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(defaultCollapsed);
+  const [current, setCurrent] = useState(currentId);
+  useEffect(() => setCurrent(currentId), [currentId]);
   return (
     <aside className="cp-sidebar" data-collapsed={collapsed || undefined}>
       <div className="cp-sidebar__head">
@@ -40,7 +45,12 @@ export function Sidebar({ logo, items, currentId, footer, defaultCollapsed = fal
         <ul className="cp-sidebar__nav">
           {items.map((it) => (
             <li key={it.id}>
-              <NavItem href={it.href} icon={it.icon} orientation="vertical" iconOnly={collapsed} isSelected={it.id === currentId}>
+              <NavItem href={it.href} icon={it.icon} orientation="vertical" iconOnly={collapsed} isSelected={it.id === current}
+                onPress={() => {
+                  setCurrent(it.id);
+                  onCurrentChange?.(it.id);
+                }}
+              >
                 {it.label}
               </NavItem>
             </li>
