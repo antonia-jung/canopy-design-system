@@ -1,5 +1,6 @@
 import { SearchField, Input as AriaInput, Button as AriaButton, type SearchFieldProps } from 'react-aria-components';
 import { Icon } from '../Icon/Icon';
+import { Kbd } from '../Kbd/Kbd';
 import '../Field/Field.css';
 import './SearchBox.css';
 
@@ -24,9 +25,7 @@ export function SearchBox({ placeholder = 'Suchen', shortcut, 'aria-label': aria
         {shortcut && shortcut.length > 0 && (
           <span className="cp-searchbox__shortcut" aria-hidden="true">
             {shortcut.map((k) => (
-              <kbd key={k} className="cp-searchbox__kbd">
-                {k}
-              </kbd>
+              <Kbd key={k} size="S">{k}</Kbd>
             ))}
           </span>
         )}

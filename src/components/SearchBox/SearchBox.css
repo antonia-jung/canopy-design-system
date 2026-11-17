@@ -33,23 +33,7 @@
   flex: none;
   gap: 4px;
 }
-.cp-searchbox__kbd {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 6px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  background: var(--cp-surface-soft);
-  box-shadow: var(--cp-shadow-soft-hover);
-  color: var(--cp-text-caption);
-  font-family: var(--cp-font-family-body), system-ui, sans-serif;
-  font-size: var(--cp-font-size-caption);
-  line-height: 1;
-}
-.cp-searchbox[data-disabled] .cp-searchbox__kbd {
+.cp-searchbox[data-disabled] .cp-searchbox__shortcut {
   opacity: 0.5;
 }
 
