@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Header } from '../../components/Header/Header';
 import { Button } from '../../components/Button/Button';
 import { NavItem } from '../../components/NavItem/NavItem';
-import { NavList } from '../../components/NavList/NavList';
 import { Page, Section } from '../foundations/helpers';
 
 const items = [
@@ -59,10 +58,7 @@ export const Uebersicht: Story = {
           <Demo />
         </div>
       </Section>
-      <Section title="Nav List" note="Mehrere Nav Items nebeneinander. Der Blob gehört immer dazu, nicht nur im Header.">
-        <NavList items={items} currentId="about" />
-      </Section>
-      <Section title="Nav Item" note="Ein einzelner Eintrag. Horizontal mit Unterstrich, vertikal mit erhabener Fläche. Für Gruppen die Nav List nehmen.">
+      <Section title="Nav Item" note="Ein einzelner Eintrag. Horizontal mit Unterstrich, vertikal mit erhabener Fläche.">
         <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
           <NavItem href="#">Standard</NavItem>
           <NavItem href="#" isSelected>Gewählt</NavItem>

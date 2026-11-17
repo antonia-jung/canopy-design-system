@@ -14,13 +14,15 @@ export interface NavListProps {
   /** id des aktuellen Eintrags */
   currentId?: string;
   'aria-label'?: string;
+  /** Hover-Fläche wandert als Blob zwischen den Einträgen. Nur für den Header gedacht. */
+  blob?: boolean;
 }
 
 /**
- * Horizontale Navigation. Beim Hover und beim Tastaturfokus wandert die Fläche
- * als Blob von Eintrag zu Eintrag. Überall, wo Nav Items nebeneinander stehen, gehört das dazu.
+ * Horizontale Navigation aus Nav Items. Mit blob wandert die Hover-Fläche beim Hover
+ * und beim Tastaturfokus von Eintrag zu Eintrag, so im Header. Ohne blob hat jeder Eintrag seine eigene Fläche.
  */
-export function NavList({ items, currentId, 'aria-label': label = 'Navigation' }: NavListProps) {
+export function NavList({ items, currentId, 'aria-label': label = 'Navigation', blob: withBlob = false }: NavListProps) {
   const [hover, setHover] = useState<number | null>(null);
   const nav = useRef<HTMLDivElement>(null);
   const blob = useRef<HTMLSpanElement>(null);
@@ -36,8 +38,14 @@ export function NavList({ items, currentId, 'aria-label': label = 'Navigation' }
 
   return (
     <nav aria-label={label}>
-      <div ref={nav} className="cp-nav-list" data-active={hover !== null || undefined} onMouseLeave={() => setHover(null)}>
-        <span ref={blob} className="cp-blob" aria-hidden="true" style={{ top: 0, left: 0 }} />
+      <div ref={nav} className="cp-nav-list" data-active={(withBlob && hover !== null) || undefined} onMouseLeave={() => setHover(null)}
+        onPointerOver={(e) => {
+          // Zusätzlich zum Hover von React Aria, damit der Blob in jedem Browser mitläuft
+          const a = (e.target as HTMLElement).closest('a');
+          const i = a ? refs.current.indexOf(a as HTMLAnchorElement) : -1;
+          if (i >= 0 && e.pointerType !== 'touch') setHover(i);
+        }}>
+        {withBlob && <span ref={blob} className="cp-blob" aria-hidden="true" style={{ top: 0, left: 0 }} />}
         {items.map((it, i) => (
           <NavItem
             key={it.id}
@@ -46,7 +54,7 @@ export function NavList({ items, currentId, 'aria-label': label = 'Navigation' }
             }}
             href={it.href}
             isSelected={it.id === currentId}
-            inBlob
+            inBlob={withBlob}
             onHoverStart={() => setHover(i)}
             onFocus={() => setHover(i)}
             onBlur={() => setHover(null)}

@@ -36,7 +36,7 @@ export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-l
           {logo}
         </a>
         <div className="cp-header__nav">
-          <NavList items={items} currentId={currentId} aria-label={label} />
+          <NavList blob items={items} currentId={currentId} aria-label={label} />
         </div>
         <div className="cp-header__spacer" />
         {action && <div className="cp-header__action">{action}</div>}
