@@ -1,0 +1,26 @@
+.cp-drawer-overlay { padding: 0; align-items: stretch; justify-content: flex-end; }
+.cp-drawer-overlay[data-placement='left'] { justify-content: flex-start; }
+.cp-drawer-overlay[data-placement='bottom'] { align-items: flex-end; justify-content: center; }
+.cp-drawer { box-sizing: border-box; outline: 0; width: 400px; max-width: 100%; height: 100%; }
+.cp-drawer[data-placement='bottom'] { width: 640px; height: auto; max-height: 80dvh; }
+.cp-drawer__surface {
+  box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; height: 100%; max-height: inherit; padding: 32px; outline: 0; position: relative;
+  background: var(--cp-surface-overlay); box-shadow: inset 0 0 0 1px var(--cp-border-default), var(--cp-shadow-elevation-lg);
+  border-radius: var(--cp-radius-lg) 0 0 var(--cp-radius-lg);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif; color: var(--cp-text-body);
+}
+.cp-drawer[data-placement='left'] .cp-drawer__surface { border-radius: 0 var(--cp-radius-lg) var(--cp-radius-lg) 0; }
+.cp-drawer[data-placement='bottom'] .cp-drawer__surface { border-radius: var(--cp-radius-lg) var(--cp-radius-lg) 0 0; height: auto; }
+.cp-drawer__handle { align-self: center; width: 40px; height: 4px; margin: -16px 0 -8px; border-radius: 2px; background: var(--cp-border-default); }
+.cp-drawer__header { display: flex; align-items: flex-start; gap: 16px; }
+.cp-drawer__title { flex: 1; margin: 0; color: var(--cp-text-heading); font-family: var(--cp-font-family-heading), system-ui, sans-serif; font-size: var(--cp-font-size-h5); font-weight: var(--cp-font-weight-semibold); line-height: 1.3; }
+.cp-drawer__content { flex: 1; min-height: 0; overflow: auto; font-size: var(--cp-font-size-paragraph-medium); line-height: 1.5; display: flex; flex-direction: column; gap: 16px; }
+.cp-drawer__footer { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+.cp-drawer[data-entering] { animation: cp-drawer-in var(--cp-duration-slow) var(--cp-easing-standard); }
+.cp-drawer[data-exiting] { animation: cp-drawer-in var(--cp-duration-base) var(--cp-easing-standard) reverse; }
+@keyframes cp-drawer-in { from { transform: translateX(100%); } }
+.cp-drawer[data-placement='left'][data-entering], .cp-drawer[data-placement='left'][data-exiting] { --_from: -100%; animation-name: cp-drawer-in-left; }
+.cp-drawer[data-placement='bottom'][data-entering], .cp-drawer[data-placement='bottom'][data-exiting] { animation-name: cp-drawer-in-bottom; }
+@keyframes cp-drawer-in-left { from { transform: translateX(-100%); } }
+@keyframes cp-drawer-in-bottom { from { transform: translateY(100%); } }
+@media (prefers-reduced-motion: reduce) { .cp-drawer[data-entering], .cp-drawer[data-exiting] { animation: none; } }

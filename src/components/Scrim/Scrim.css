@@ -1,0 +1,10 @@
+.cp-scrim { position: fixed; inset: 0; background: var(--cp-surface-scrim); }
+/* Gemeinsame Klasse für die ModalOverlay von Dialog und Drawer */
+.cp-overlay {
+  position: fixed; inset: 0; z-index: 100; background: var(--cp-surface-scrim);
+  display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box;
+}
+.cp-overlay[data-entering] { animation: cp-overlay-in var(--cp-duration-base) var(--cp-easing-standard); }
+.cp-overlay[data-exiting] { animation: cp-overlay-in var(--cp-duration-fast) var(--cp-easing-standard) reverse; }
+@keyframes cp-overlay-in { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cp-overlay[data-entering], .cp-overlay[data-exiting] { animation: none; } }

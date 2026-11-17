@@ -56,3 +56,7 @@ export { List, ListItem, type ListProps, type ListItemProps } from './components
 export { Alert, type AlertProps, type AlertIntent } from './components/Alert/Alert';
 export { Accordion, AccordionGroup, type AccordionItemProps, type AccordionGroupProps } from './components/Accordion/Accordion';
 export { EmptyState, type EmptyStateProps } from './components/EmptyState/EmptyState';
+export { Scrim, type ScrimProps } from './components/Scrim/Scrim';
+export { Dialog, type DialogProps } from './components/Dialog/Dialog';
+export { Popover, type PopoverProps } from './components/Popover/Popover';
+export { Drawer, type DrawerProps } from './components/Drawer/Drawer';
