@@ -2090,6 +2090,15 @@ export const tokens = {
         ]
       },
       {
+        "name": "Surface/field-on-raised",
+        "cssVar": "--cp-surface-field-on-raised",
+        "type": "C",
+        "values": [
+          "{Surface/soft-pressed}",
+          "#2c5846"
+        ]
+      },
+      {
         "name": "Surface/control",
         "cssVar": "--cp-surface-control",
         "type": "C",

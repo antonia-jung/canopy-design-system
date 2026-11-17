@@ -11,14 +11,8 @@
   .cp-login__panel { padding: 24px; }
 }
 
-/* Dark Mode: Felder in Formular-Panels sind heller als das Panel. Das globale Eingedrückt-Dunkel passt zur Seite, nicht zu einer erhabenen Fläche. */
-[data-theme='dark'] .cp-login__panel,
-[data-theme='dark'] .cp-contact__panel {
-  --cp-surface-soft-pressed: color-mix(in srgb, var(--cp-primary-500) 70%, var(--cp-primary-400));
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .cp-login__panel,
-  :root:not([data-theme='light']) .cp-contact__panel {
-    --cp-surface-soft-pressed: color-mix(in srgb, var(--cp-primary-500) 70%, var(--cp-primary-400));
-  }
+/* Felder in Formular-Panels: eigenes Token, im Dark Mode heller als das Panel. */
+.cp-login__panel,
+.cp-contact__panel {
+  --cp-surface-soft-pressed: var(--cp-surface-field-on-raised);
 }
