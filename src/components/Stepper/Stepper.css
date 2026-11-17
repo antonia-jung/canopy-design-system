@@ -70,16 +70,3 @@
 .cp-stepper__connector[data-done] {
   background: var(--cp-surface-action);
 }
-@media (max-width: 767px) {
-  .cp-stepper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .cp-stepper__connector {
-    width: 2px;
-    height: 16px;
-    min-width: 0;
-    flex: none;
-    margin-left: 15px;
-  }
-}

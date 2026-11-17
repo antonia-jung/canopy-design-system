@@ -21,6 +21,7 @@ export interface FooterProps {
 /** Fußzeile mit Linkspalten und Rechtlichem. */
 export function Footer({ logo, claim, columns = [], copyright, legal = [], variant = 'extended' }: FooterProps) {
   return (
+    <div className="cp-container">
     <footer className="cp-footer" data-style={variant}>
       {variant === 'extended' && (
         <div className="cp-footer__top">
@@ -58,5 +59,6 @@ export function Footer({ logo, claim, columns = [], copyright, legal = [], varia
         </ul>
       </div>
     </footer>
+    </div>
   );
 }

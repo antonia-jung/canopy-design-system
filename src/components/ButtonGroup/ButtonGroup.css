@@ -6,7 +6,9 @@
   display: inline-flex;
   align-items: stretch;
   border-radius: var(--cp-radius-md);
-  background: var(--cp-surface-soft);
+  /* 1 px Lücke zwischen den Buttons: der Hintergrund scheint als Trennlinie durch */
+  gap: 1px;
+  background: var(--cp-border-default);
   box-shadow: var(--cp-shadow-soft-raised);
   padding: 0;
   width: fit-content;
@@ -22,8 +24,8 @@
   min-width: 40px;
   padding: 10px 16px;
   border: 0;
-  background: transparent;
-  color: var(--cp-text-body);
+  background: var(--cp-surface-soft);
+  color: var(--cp-text-caption);
   font-family: var(--cp-font-family-body), system-ui, sans-serif;
   font-weight: 600;
   font-size: var(--cp-font-size-paragraph-medium);
@@ -42,17 +44,6 @@
 .cp-button-group__item > svg {
   color: var(--cp-icon-default);
 }
-/* Trennlinie zwischen den Buttons */
-.cp-button-group__item + .cp-button-group__item::before {
-  content: '';
-  position: absolute;
-  left: -0.5px;
-  top: 8px;
-  bottom: 8px;
-  width: 1px;
-  background: var(--cp-border-default);
-  opacity: 0.4;
-}
 .cp-button-group__item:first-child {
   border-radius: var(--cp-radius-md) 0 0 var(--cp-radius-md);
 }
@@ -61,6 +52,10 @@
 }
 .cp-button-group__item[data-hovered] {
   background: var(--cp-surface-hover);
+  color: var(--cp-text-action-hover);
+}
+.cp-button-group__item[data-hovered] > svg {
+  color: var(--cp-icon-action-hover);
 }
 .cp-button-group__item[data-selected],
 .cp-button-group__item[data-pressed] {
@@ -68,12 +63,11 @@
   box-shadow: var(--cp-shadow-soft-pressed);
   color: var(--cp-text-action);
 }
-.cp-button-group__item[data-selected] > svg {
+.cp-button-group__item[data-pressed] > svg {
   color: var(--cp-icon-action);
 }
-.cp-button-group__item[data-selected]::before,
-.cp-button-group__item[data-selected] + .cp-button-group__item::before {
-  opacity: 0;
+.cp-button-group__item[data-selected] > svg {
+  color: var(--cp-icon-action);
 }
 .cp-button-group__item[data-focus-visible] {
   outline: 2px solid var(--cp-border-action);

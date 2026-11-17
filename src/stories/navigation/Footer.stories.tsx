@@ -19,4 +19,6 @@ type Story = StoryObj<typeof Footer>;
 
 export const Extended: Story = {};
 export const Minimal: Story = { args: { variant: 'minimal' } };
-export const Mobile: Story = { parameters: { viewport: { defaultViewport: 'mobile' } } };
+/** Mobile: 375 px breiter Rahmen */
+export const Mobile: Story = { decorators: [(Story) => <div style={{ width: 375 }}><Story /></div>] };
+export const MobileMinimal: Story = { args: { variant: 'minimal' }, decorators: Mobile.decorators };

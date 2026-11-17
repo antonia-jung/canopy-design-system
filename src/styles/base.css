@@ -41,3 +41,9 @@ body {
   will-change: transform, width, height;
   z-index: 0;
 }
+
+/* Hüllen für Komponenten mit mobilem Layout: sie reagieren auf die Breite ihres Platzes */
+.cp-container {
+  container: cp / inline-size;
+  width: 100%;
+}

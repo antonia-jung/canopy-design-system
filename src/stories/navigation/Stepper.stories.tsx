@@ -34,7 +34,7 @@ const Flow = () => {
 export const Uebersicht: Story = {
   name: 'Übersicht',
   render: () => (
-    <Page title="Stepper" intro="Zeigt den Fortschritt durch einen mehrstufigen Ablauf. Die Linie füllt sich, erledigte Schritte zeigen ein Häkchen. Am Handy stehen die Schritte untereinander.">
+    <Page title="Stepper" intro="Zeigt den Fortschritt durch einen mehrstufigen Ablauf. Die Linie füllt sich, erledigte Schritte zeigen ein Häkchen.">
       <Section title="Mit Zurück und Weiter">
         <Flow />
       </Section>

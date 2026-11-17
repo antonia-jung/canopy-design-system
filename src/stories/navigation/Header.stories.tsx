@@ -31,31 +31,38 @@ const Demo = () => {
   );
 };
 
-export const Desktop: Story = {
+/** Volle Breite: so sieht der Header am Desktop aus. Mit der Maus über die Einträge fahren, dann wandert der Blob. */
+export const Desktop: Story = { render: () => <Demo /> };
+
+/** Mobile: 375 px breiter Rahmen. Die Komponente reagiert auf ihre Breite, nicht aufs Fenster. */
+export const Mobile: Story = {
   render: () => (
-    <div style={{ padding: 24, display: 'grid', gap: 24 }}>
-      <Page title="Header" intro="Kopfzeile mit Logo, Navigation und Hauptaktion. Am Desktop wandert die Hover-Fläche als Blob von Eintrag zu Eintrag. Am Handy öffnet ein Menü-Button die Liste, weil Touch kein Hover kennt.">
-        <Section title="Desktop" note="Mit der Maus oder Pfeil-Tab über die Einträge fahren.">
-          <div style={{ border: '1px solid var(--cp-border-default)', borderRadius: 'var(--cp-radius-lg)', overflow: 'hidden' }}>
-            <Demo />
-          </div>
-        </Section>
-        <Section title="Nav Item" note="Horizontal mit Unterstrich, vertikal mit erhabener Fläche.">
-          <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
-            <NavItem href="#">Standard</NavItem>
-            <NavItem href="#" isSelected>Gewählt</NavItem>
-            <NavItem href="#" isDisabled>Deaktiviert</NavItem>
-            <div style={{ width: 200 }}>
-              <NavItem href="#" orientation="vertical" icon="home" isSelected>Vertikal</NavItem>
-            </div>
-          </div>
-        </Section>
-      </Page>
+    <div style={{ width: 375, border: '1px solid var(--cp-border-default)', margin: 24 }}>
+      <Demo />
     </div>
   ),
 };
 
-export const Mobile: Story = {
-  parameters: { viewport: { defaultViewport: 'mobile' } },
-  render: () => <Demo />,
+export const Uebersicht: Story = {
+  name: 'Übersicht',
+  parameters: { layout: 'padded' },
+  render: () => (
+    <Page title="Header und Nav Item" intro="Kopfzeile mit Logo, Navigation und Hauptaktion. Am Desktop wandert die Hover-Fläche als Blob von Eintrag zu Eintrag, am Handy öffnet ein Menü-Button die Liste, weil Touch kein Hover kennt. Die Stories Desktop und Mobile zeigen beide Größen.">
+      <Section title="Mobil (375 px breiter Rahmen)" note="Der Header reagiert auf die Breite seines Platzes. Das Menü lässt sich per Button öffnen.">
+        <div style={{ width: 375, border: '1px solid var(--cp-border-default)', borderRadius: 'var(--cp-radius-lg)', overflow: 'hidden' }}>
+          <Demo />
+        </div>
+      </Section>
+      <Section title="Nav Item" note="Horizontal mit Unterstrich, vertikal mit erhabener Fläche.">
+        <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
+          <NavItem href="#">Standard</NavItem>
+          <NavItem href="#" isSelected>Gewählt</NavItem>
+          <NavItem href="#" isDisabled>Deaktiviert</NavItem>
+          <div style={{ width: 200 }}>
+            <NavItem href="#" orientation="vertical" icon="home" isSelected>Vertikal</NavItem>
+          </div>
+        </div>
+      </Section>
+    </Page>
+  ),
 };

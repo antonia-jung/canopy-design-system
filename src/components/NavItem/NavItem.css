@@ -4,6 +4,7 @@
  */
 .cp-nav-item {
   position: relative;
+  isolation: isolate;
   z-index: 1;
   display: inline-flex;
   align-items: center;
@@ -14,8 +15,8 @@
   color: var(--cp-text-link);
   font-family: var(--cp-font-family-body), system-ui, sans-serif;
   font-size: var(--cp-font-size-paragraph-medium);
-  line-height: 20px;
-  font-weight: 500;
+  line-height: 24px;
+  font-weight: 400;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
@@ -69,10 +70,20 @@
   padding: 0;
   min-width: 40px;
 }
+/* Fokus wie in Figma: Fläche 3 px nach innen, Ring fast am Rand */
 .cp-nav-item[data-focus-visible] {
-  background: var(--cp-surface-hover);
+  background: transparent;
+  box-shadow: none;
   outline: 2px solid var(--cp-border-action);
-  outline-offset: 2px;
+  outline-offset: -1px;
+}
+.cp-nav-item[data-focus-visible]::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--cp-surface-hover);
 }
 .cp-nav-item[data-disabled] {
   color: var(--cp-text-disabled);

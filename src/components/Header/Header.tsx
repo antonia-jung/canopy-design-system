@@ -42,6 +42,7 @@ export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-l
   useBlob(blob, nav, () => refs.current[last.current] ?? null, hover ?? `idle-${last.current}`, { teleport });
 
   return (
+    <div className="cp-container">
     <header className="cp-header">
       <div className="cp-header__bar">
         <a className="cp-header__logo" href={logoHref}>
@@ -89,5 +90,6 @@ export function Header({ logo, logoHref = '/', items, currentId, action, 'aria-l
         {action}
       </nav>
     </header>
+    </div>
   );
 }

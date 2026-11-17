@@ -46,7 +46,8 @@
 .cp-header__menu {
   display: none;
 }
-@media (max-width: 767px) {
+/* Reagiert auf die Breite des Containers, nicht des Fensters */
+@container cp (max-width: 767px) {
   .cp-header__bar {
     padding: 0 24px;
     gap: 0;

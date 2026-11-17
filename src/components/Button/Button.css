@@ -11,15 +11,20 @@
   --_border: transparent;
   --_shadow: none;
   --_layers: none;
+  --_bw: 2px;
+  --_ring: var(--cp-border-action);
 
   position: relative;
+  isolation: isolate;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
   min-height: 32px;
-  padding: 6px 12px;
-  border: 2px solid var(--_border);
+  /* Höhe 32 wie in Figma: der Rand liegt innen, Polster minus Randbreite */
+  padding: calc(6px - var(--_bw)) calc(12px - var(--_bw));
+  border: var(--_bw) solid var(--_border);
   border-radius: var(--cp-radius-pill);
   background-color: var(--_bg);
   background-image: var(--_layers);
@@ -53,10 +58,29 @@
   overflow-clip-margin: 4px;
 }
 
-/* Fokus-Ring: 2 px Ring, 2 px Abstand, außen */
+/*
+ * Fokus wie in Figma: Die Fläche rückt 3 px nach innen, darum liegt ein 2 px Ring,
+ * der fast am Rand sitzt. Die Fläche wird dafür als ::before nachgebaut.
+ */
 .cp-button[data-focus-visible] {
-  outline: 2px solid var(--cp-border-action);
-  outline-offset: 2px;
+  background-color: transparent;
+  background-image: none;
+  box-shadow: none;
+  border-color: transparent;
+  outline: 2px solid var(--_ring);
+  outline-offset: -1px;
+}
+.cp-button[data-focus-visible]::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: calc(3px - var(--_bw));
+  box-sizing: border-box;
+  border: var(--_bw) solid var(--_border);
+  border-radius: inherit;
+  background-color: var(--_bg);
+  background-image: var(--_layers);
+  box-shadow: var(--_shadow);
 }
 
 /* Default (Soft): erhaben auf Seitenflächen */
@@ -78,7 +102,13 @@
   --_bg: var(--cp-surface-inverse);
   --_fg: var(--cp-text-on-inverse);
   --_icon: var(--cp-text-on-inverse);
-  --_border: var(--cp-border-inverse);
+  --_ring: var(--cp-border-inverse);
+}
+.cp-button[data-variant='inverse'][data-hovered] {
+  --_shadow: var(--cp-shadow-soft-hover);
+}
+.cp-button[data-variant='inverse'][data-pressed] {
+  --_shadow: var(--cp-shadow-soft-pressed);
 }
 .cp-button[data-variant='inverse'][data-hovered] {
   --_bg: var(--cp-surface-inverse-hover);
@@ -92,6 +122,7 @@
   --_fg: var(--cp-outline-text);
   --_icon: var(--cp-outline-icon);
   --_border: var(--cp-outline-border);
+  --_ring: var(--cp-outline-border);
   --_layers:
     linear-gradient(to bottom, color-mix(in srgb, var(--cp-outline-sheen) 90%, transparent), transparent 60%),
     linear-gradient(to bottom, transparent 45%, color-mix(in srgb, var(--cp-outline-shade) 35%, transparent));
@@ -104,13 +135,13 @@
   --_layers: linear-gradient(to bottom, color-mix(in srgb, var(--cp-outline-shade) 50%, transparent), transparent 55%);
 }
 
-/* Transparent: Abbrechen, Schließen, Zurücksetzen */
+/* Transparent: 1 px Rand, ohne Fläche. Erst beim Drücken kommt eine Fläche dazu. */
 .cp-button[data-variant='transparent'] {
+  --_bw: 1px;
   --_fg: var(--cp-outline-text);
   --_icon: var(--cp-outline-icon);
-}
-.cp-button[data-variant='transparent'][data-hovered] {
-  --_bg: var(--cp-outline-hover);
+  --_border: var(--cp-outline-border);
+  --_ring: var(--cp-outline-border);
 }
 .cp-button[data-variant='transparent'][data-pressed] {
   --_bg: var(--cp-outline-pressed);
@@ -144,7 +175,7 @@
 /* Deaktiviert */
 .cp-button[data-disabled] {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: 0.5;
   --_shadow: none;
   --_layers: none;
 }
