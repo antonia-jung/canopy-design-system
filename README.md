@@ -1,10 +1,19 @@
 # Canopy Design System
 
-Canopy ist ein eigenständiges, vollständiges Design System als Portfolio-Projekt: Tokens, 53 Komponenten, Patterns, Templates und interaktive Prototypen in Light und Dark. Demo-Marke ist Lichtung, die Primärfarbe ein tiefes Waldgrün.
+Canopy ist ein eigenständiges, vollständiges Design System als Portfolio-Projekt von Antonia Jung: Tokens, über 50 Komponenten, Patterns, Templates und interaktive Prototypen in Light und Dark. Demo-Marke ist Lichtung, die Primärfarbe ein tiefes Waldgrün.
 
-Design System von Antonia Jung: Tokens, React-Komponenten und Storybook. Entworfen in Figma, umgesetzt mit React, TypeScript und [React Aria](https://react-spectrum.adobe.com/react-aria/).
+Entworfen in Figma, umgesetzt mit React, TypeScript und [React Aria](https://react-spectrum.adobe.com/react-aria/).
 
 **Storybook:** https://antonia-jung.github.io/canopy-design-system/
+
+## Bausteine
+
+Das System folgt Atomic Design:
+
+- **Foundations:** Farben, Typografie, Abstände, Radien, Schatten und Motion als Tokens.
+- **Komponenten:** von Button, Input und Badge bis Kalender, Tabelle, Wheel Picker und Dialog.
+- **Patterns:** Login, Contact, Search, Gallery und Data Page.
+- **Templates:** Landing Page, Projekt-Detail und Kontaktseite mit gemeinsamem Header und Footer, responsiv per Container Query.
 
 ## Aufbau
 
@@ -15,7 +24,10 @@ Design System von Antonia Jung: Tokens, React-Komponenten und Storybook. Entworf
 | `scripts/build-tokens.mjs` | Erzeugt daraus CSS-Variablen und die Token-Liste für Storybook |
 | `src/styles/` | `tokens.css` (erzeugt) und `base.css` |
 | `src/motion/` | Bewegungs-Bausteine, etwa `useBlob` für wandernde Indikatoren (Feder-Simulation, Einstellungen in `blobDefaults`) |
-| `src/stories/` | Einführung und Foundation-Seiten |
+| `src/components/` | Komponenten, je Ordner mit Komponente, CSS und Story-Gegenstück in `src/stories/` |
+| `src/patterns/` | Zusammengesetzte Muster wie Login, Contact oder Data Page |
+| `src/templates/` | Seitenvorlagen mit Header und Footer |
+| `src/stories/` | Einführung, Foundations, Komponenten-, Pattern- und Template-Stories |
 
 ## Tokens
 
@@ -42,3 +54,7 @@ pnpm build           # Bibliothek nach dist/
 ```
 
 Bei jedem Push auf `main` baut GitHub Actions das Storybook und veröffentlicht es auf GitHub Pages.
+
+## Lizenz
+
+MIT, siehe [LICENSE](LICENSE).
