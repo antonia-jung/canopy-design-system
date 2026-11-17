@@ -60,3 +60,8 @@ export { Scrim, type ScrimProps } from './components/Scrim/Scrim';
 export { Dialog, type DialogProps } from './components/Dialog/Dialog';
 export { Popover, type PopoverProps } from './components/Popover/Popover';
 export { Drawer, type DrawerProps } from './components/Drawer/Drawer';
+export { LoginPattern, type LoginPatternProps, type LoginValues } from './patterns/Login/LoginPattern';
+export { ContactPattern, type ContactPatternProps, type ContactValues } from './patterns/Contact/ContactPattern';
+export { SearchPattern, type SearchPatternProps, type SearchItem } from './patterns/Search/SearchPattern';
+export { GalleryPattern, type GalleryPatternProps, type GalleryItem } from './patterns/Gallery/GalleryPattern';
+export { DataPagePattern, type DataPagePatternProps, type DataRow } from './patterns/DataPage/DataPagePattern';

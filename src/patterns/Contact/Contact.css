@@ -1,0 +1,13 @@
+.cp-contact { display: flex; justify-content: center; padding: 48px; box-sizing: border-box; background: var(--cp-surface-page); }
+.cp-contact__panel { box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; width: 100%; max-width: 640px; padding: 32px; border-radius: var(--cp-radius-lg); background: var(--cp-surface-raised); }
+.cp-contact__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.cp-contact__consent { display: flex; flex-direction: column; gap: 4px; }
+.cp-contact__error { color: var(--cp-text-error); font-size: var(--cp-font-size-paragraph-small); }
+.cp-contact__actions { display: flex; justify-content: flex-end; gap: 8px; }
+@container cp (max-width: 767px) {
+  .cp-contact { padding: 24px 16px; }
+  .cp-contact__panel { padding: 24px; }
+  .cp-contact__row { grid-template-columns: 1fr; }
+  .cp-contact__actions { flex-direction: column-reverse; }
+  .cp-contact__actions > * { width: 100%; }
+}
