@@ -148,6 +148,14 @@
   --_bg: var(--cp-outline-pressed);
 }
 
+/* Gedrückt: der Inhalt rutscht wie in Figma 2 px nach unten (Button, Button Icon, Bell Button) */
+.cp-button > * {
+  transition: transform var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-button[data-pressed] > * {
+  transform: translateY(2px);
+}
+
 /* Rückmeldung direkt auf dem Button */
 .cp-button[data-status='success'] {
   --_fg: var(--cp-text-success);
