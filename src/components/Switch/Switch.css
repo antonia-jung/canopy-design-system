@@ -1,0 +1,84 @@
+.cp-switch {
+  --_track: var(--cp-surface-soft-pressed);
+  --_thumb: var(--cp-surface-soft);
+  --_thumb-shadow: var(--cp-shadow-soft-raised);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-large);
+  line-height: 24px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cp-switch__track {
+  position: relative;
+  isolation: isolate;
+  flex: none;
+  box-sizing: border-box;
+  width: 80px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 999px;
+  background-color: var(--_track);
+  box-shadow: var(--cp-shadow-soft-pressed);
+  transition: background-color var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-switch__thumb {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--_thumb);
+  box-shadow: var(--_thumb-shadow);
+  transition:
+    transform var(--cp-duration-settle) var(--cp-easing-bounce),
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    box-shadow var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-switch[data-selected] .cp-switch__track {
+  --_track: var(--cp-surface-action);
+}
+.cp-switch[data-selected] .cp-switch__thumb {
+  transform: translateX(40px);
+}
+.cp-switch[data-hovered] {
+  --_thumb: var(--cp-surface-hover);
+  --_thumb-shadow: var(--cp-shadow-soft-hover);
+}
+/* Gedrückt: der Knopf dehnt sich leicht */
+.cp-switch[data-pressed] .cp-switch__thumb {
+  width: 38px;
+}
+.cp-switch[data-pressed][data-selected] .cp-switch__thumb {
+  transform: translateX(34px);
+}
+.cp-switch[data-disabled] {
+  color: var(--cp-text-disabled);
+  cursor: not-allowed;
+}
+.cp-switch[data-disabled] .cp-switch__track {
+  --_track: var(--cp-surface-disabled);
+  box-shadow: none;
+}
+.cp-switch[data-disabled] .cp-switch__thumb {
+  box-shadow: none;
+}
+/* Fokus wie in Figma: Fläche 2 px nach innen, Ring 2 px außerhalb */
+.cp-switch[data-focus-visible] .cp-switch__track {
+  background-color: transparent;
+  box-shadow: none;
+  outline: 2px solid var(--cp-border-action);
+  outline-offset: 2px;
+}
+.cp-switch[data-focus-visible] .cp-switch__track::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 2px;
+  border-radius: 999px;
+  background-color: var(--_track);
+  box-shadow: var(--cp-shadow-soft-pressed);
+}

@@ -1,0 +1,54 @@
+.cp-searchbox {
+  display: block;
+  width: 100%;
+}
+/* Löschen-Button nur bei Inhalt */
+.cp-searchbox[data-empty] .cp-searchbox__clear {
+  display: none;
+}
+.cp-searchbox__clear {
+  display: inline-flex;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--cp-radius-pill);
+  background: transparent;
+  color: var(--_icon, var(--cp-icon-default));
+  cursor: pointer;
+  outline: none;
+}
+.cp-searchbox__clear[data-focus-visible] {
+  outline: 2px solid var(--cp-border-input);
+  outline-offset: 1px;
+}
+.cp-searchbox__clear svg {
+  color: inherit;
+}
+/* Kürzel verschwindet, sobald etwas im Feld steht */
+.cp-searchbox:not([data-empty]) .cp-searchbox__shortcut {
+  display: none;
+}
+.cp-searchbox__shortcut {
+  display: inline-flex;
+  flex: none;
+  gap: 4px;
+}
+.cp-searchbox__kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-hover);
+  color: var(--cp-text-caption);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-caption);
+  line-height: 1;
+}
+.cp-searchbox[data-disabled] .cp-searchbox__kbd {
+  opacity: 0.5;
+}

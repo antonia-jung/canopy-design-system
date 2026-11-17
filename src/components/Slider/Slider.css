@@ -1,0 +1,82 @@
+.cp-slider {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  min-width: 160px;
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+}
+.cp-slider__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.cp-slider__output {
+  color: var(--cp-text-caption);
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  font-variant-numeric: tabular-nums;
+}
+/* Die Spur ist 24 px hoch wie der Knopf. Die Leiste ragt 12 px über, damit der Knopf an den Enden nicht übersteht. */
+.cp-slider__track {
+  position: relative;
+  height: 24px;
+  margin: 0 12px;
+  cursor: pointer;
+}
+.cp-slider__track::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  right: -12px;
+  top: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cp-surface-soft-pressed);
+  box-shadow: var(--cp-shadow-soft-pressed);
+}
+.cp-slider__fill {
+  position: absolute;
+  top: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--cp-surface-action);
+}
+.cp-slider__thumb {
+  position: absolute;
+  top: 50%;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+  outline: none;
+  cursor: grab;
+  transition:
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    box-shadow var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-slider__thumb[data-hovered] {
+  background: var(--cp-surface-hover);
+  box-shadow: var(--cp-shadow-soft-hover);
+}
+.cp-slider__thumb[data-dragging] {
+  cursor: grabbing;
+  box-shadow: var(--cp-shadow-soft-hover);
+}
+/* Fokus: Ring 4 px außerhalb des Knopfes */
+.cp-slider__thumb[data-focus-visible]::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid var(--cp-border-action);
+}
+.cp-slider[data-disabled] {
+  opacity: 0.5;
+}
+.cp-slider[data-disabled] .cp-slider__track,
+.cp-slider[data-disabled] .cp-slider__thumb {
+  cursor: not-allowed;
+}

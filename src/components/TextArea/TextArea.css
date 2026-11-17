@@ -1,0 +1,20 @@
+/* Der Hinweis steht bei der Text Area wie in Figma direkt unter dem Label */
+.cp-hint--caption {
+  color: var(--cp-text-caption);
+}
+.cp-input[data-validation='error'] .cp-hint--caption {
+  color: var(--cp-text-error);
+}
+.cp-input[data-validation='success'] .cp-hint--caption {
+  color: var(--cp-text-success);
+}
+.cp-input[data-disabled] .cp-hint--caption {
+  color: var(--cp-text-disabled);
+}
+.cp-textarea__count {
+  color: var(--cp-text-placeholder);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-small);
+  line-height: 20px;
+  text-align: right;
+}

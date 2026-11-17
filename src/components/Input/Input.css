@@ -1,0 +1,26 @@
+.cp-input {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+}
+.cp-input > .cp-label {
+  align-self: flex-start;
+}
+.cp-hint {
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+}
+.cp-input[data-validation='error'] .cp-hint {
+  color: var(--cp-text-error);
+}
+.cp-input[data-validation='success'] .cp-hint {
+  color: var(--cp-text-success);
+}
+.cp-input[data-disabled] .cp-hint,
+.cp-input[data-disabled] .cp-label {
+  color: var(--cp-text-disabled);
+}

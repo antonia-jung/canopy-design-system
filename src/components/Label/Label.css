@@ -1,0 +1,25 @@
+.cp-label {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 20px;
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 20px;
+  font-weight: 400;
+}
+/* Sternchen hängt links neben dem Text, so bleibt die Beschriftung bündig */
+.cp-label__required {
+  position: absolute;
+  left: -10px;
+  top: 1px;
+  color: var(--cp-icon-error);
+  font-weight: 600;
+}
+.cp-label__help {
+  display: inline-flex;
+  color: var(--cp-icon-action);
+  cursor: help;
+}

@@ -1,0 +1,166 @@
+/*
+ * Feldfläche für Field, Search Box und Text Area: eingedrückte Fläche mit weichem Innenschatten.
+ * Zustände kommen aus dem Browser (:hover, :focus-within, :disabled, :read-only), die Validierung aus data-validation.
+ * Fokus wie in Figma: Fläche 3 px nach innen, darum ein 2 px Ring.
+ */
+.cp-fieldbox {
+  --_bg: var(--cp-surface-soft-pressed);
+  --_border: var(--cp-border-input);
+  --_bw: 1px;
+  --_shadow: var(--cp-shadow-soft-pressed);
+  --_text: var(--cp-text-heading);
+  --_ph: var(--cp-text-placeholder);
+  --_icon: var(--cp-icon-default);
+  --_ring: var(--cp-border-input);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--cp-radius-md);
+  background-color: var(--_bg);
+  box-shadow: var(--_shadow), 0 0 0 var(--_bw) var(--_border);
+  color: var(--_text);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  line-height: 24px;
+  cursor: text;
+  transition:
+    background-color var(--cp-duration-fast) var(--cp-easing-standard),
+    box-shadow var(--cp-duration-fast) var(--cp-easing-standard),
+    color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-fieldbox[data-size='S'] {
+  height: 32px;
+  padding: 0 8px;
+}
+.cp-fieldbox[data-size='L'] {
+  height: 48px;
+  padding: 0 24px;
+}
+.cp-fieldbox svg {
+  flex: none;
+  color: var(--_icon);
+}
+.cp-fieldbox__affix {
+  flex: none;
+  color: var(--_ph);
+}
+.cp-fieldbox__input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-overflow: ellipsis;
+}
+.cp-fieldbox__input::placeholder {
+  color: var(--_ph);
+  opacity: 1;
+}
+
+/* Hover */
+.cp-fieldbox:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+  --_bg: var(--cp-surface-hover);
+  --_border: var(--cp-border-action-hover);
+  --_text: var(--cp-text-on-action-hover-alt);
+  --_ph: var(--cp-text-on-action-hover-alt);
+  --_icon: var(--cp-icon-on-action-hover-alt);
+}
+
+/* Validierung */
+.cp-fieldbox[data-validation='error'] {
+  --_bg: var(--cp-surface-error);
+  --_border: var(--cp-border-error);
+  --_bw: 2px;
+  --_icon: var(--cp-icon-error);
+  --_ring: var(--cp-border-error);
+}
+.cp-fieldbox[data-validation='success'] {
+  --_bg: var(--cp-surface-success);
+  --_border: var(--cp-border-success);
+  --_bw: 2px;
+  --_icon: var(--cp-icon-success);
+  --_ring: var(--cp-border-success);
+}
+.cp-fieldbox[data-validation='error']:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+  --_bg: var(--cp-surface-error-hover);
+  --_border: var(--cp-border-error-hover);
+  --_text: var(--cp-text-heading);
+  --_ph: var(--cp-text-placeholder);
+  --_icon: var(--cp-icon-error);
+}
+.cp-fieldbox[data-validation='success']:hover:not(:has(:disabled, :read-only)):not(:focus-within) {
+  --_bg: var(--cp-surface-success-hover);
+  --_border: var(--cp-border-success-hover);
+  --_text: var(--cp-text-heading);
+  --_ph: var(--cp-text-placeholder);
+  --_icon: var(--cp-icon-success);
+}
+
+/* Nur lesbar: keine Fläche, dünne Linie */
+.cp-fieldbox:has(:read-only:not(:disabled)) {
+  --_bg: transparent;
+  --_border: var(--cp-border-default);
+  --_bw: 1px;
+  --_shadow: 0 0 0 0 transparent;
+  --_text: var(--cp-text-body);
+}
+
+/* Deaktiviert */
+.cp-fieldbox:has(:disabled) {
+  --_bg: var(--cp-surface-disabled);
+  --_border: var(--cp-border-disabled);
+  --_bw: 1px;
+  --_shadow: 0 0 0 0 transparent;
+  --_text: var(--cp-text-disabled);
+  --_ph: var(--cp-text-disabled);
+  --_icon: var(--cp-icon-disabled);
+  cursor: not-allowed;
+}
+.cp-fieldbox:has(:disabled) .cp-fieldbox__input {
+  cursor: not-allowed;
+}
+
+/* Fokus */
+.cp-fieldbox:focus-within {
+  background-color: transparent;
+  box-shadow: none;
+  outline: 2px solid var(--_ring);
+  outline-offset: -1px;
+}
+.cp-fieldbox:focus-within::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 3px;
+  border-radius: 9px;
+  background-color: var(--_bg);
+  box-shadow:
+    inset 0 0 0 1px var(--_border),
+    var(--_shadow);
+}
+
+/* Mehrzeilig (Text Area) */
+.cp-fieldbox[data-multiline] {
+  height: auto;
+  align-items: flex-start;
+  padding: 12px;
+}
+.cp-fieldbox[data-multiline]:focus-within::before {
+  inset: 4px;
+}
+.cp-fieldbox[data-multiline] .cp-fieldbox__input {
+  resize: vertical;
+  min-height: 216px;
+  line-height: 24px;
+}
