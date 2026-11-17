@@ -141,3 +141,48 @@ describe('Slider', () => {
     expect(screen.getAllByRole('slider')).toHaveLength(2);
   });
 });
+
+describe('Stufe 2', () => {
+  it('Menu: Auswahl mit Häkchen und Suche', async () => {
+    const { Menu } = await import('./Menu/Menu');
+    const user = userEvent.setup();
+    render(<Menu aria-label="Obst" selectionMode="single" searchable groups={[{ items: [{ id: 'a', label: 'Apfel' }, { id: 'b', label: 'Birne' }] }]} />);
+    await user.type(screen.getByRole('textbox', { name: 'Einträge filtern' }), 'bir');
+    expect(screen.queryByText('Apfel')).toBeNull();
+    await user.click(screen.getByText('Birne'));
+    expect(screen.getByRole('menuitemradio', { name: 'Birne' })).toHaveAttribute('aria-checked', 'true');
+    await user.clear(screen.getByRole('textbox', { name: 'Einträge filtern' }));
+    await user.type(screen.getByRole('textbox', { name: 'Einträge filtern' }), 'xyz');
+    expect(screen.getByRole('status')).toHaveTextContent('Nichts gefunden');
+  });
+
+  it('Dropdown: öffnet und wählt', async () => {
+    const { Dropdown } = await import('./Dropdown/Dropdown');
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<Dropdown label="Fach" onSelectionChange={onChange} groups={[{ items: [{ id: 'ux', label: 'UX' }, { id: 'fe', label: 'Frontend' }] }]} />);
+    await user.click(screen.getByRole('button', { name: /Bitte wählen/ }));
+    await user.click(await screen.findByRole('option', { name: 'Frontend' }));
+    expect(onChange).toHaveBeenCalledWith('fe');
+  });
+
+  it('Calendar: wählt ein Datum', async () => {
+    const { Calendar } = await import('./Calendar/Calendar');
+    const { CalendarDate } = await import('@internationalized/date');
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<Calendar aria-label="Datum" defaultFocusedValue={new CalendarDate(2026, 11, 1)} onChange={onChange} />);
+    await user.click(screen.getByRole('button', { name: /15/ }));
+    expect(onChange.mock.calls[0][0].toString()).toBe('2026-11-15');
+  });
+
+  it('WheelPicker: Tastatur ändert den Wert', async () => {
+    const { WheelPicker } = await import('./WheelPicker/WheelPicker');
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<WheelPicker aria-label="Zahl" columns={[{ id: 'n', label: 'Zahl', options: [1, 2, 3].map((n) => ({ value: n, label: String(n) })) }]} value={{ n: 1 }} onChange={onChange} />);
+    screen.getByRole('listbox', { name: 'Zahl' }).focus();
+    await user.keyboard('{ArrowDown}');
+    expect(onChange).toHaveBeenCalledWith({ n: 2 });
+  });
+});

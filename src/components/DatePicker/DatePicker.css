@@ -1,0 +1,24 @@
+.cp-datepicker { display: flex; flex-direction: column; gap: 8px; width: 100%; font-family: var(--cp-font-family-body), system-ui, sans-serif; }
+.cp-datepicker__box { cursor: text; }
+.cp-datepicker__input { display: flex; flex: 1; align-items: center; min-width: 0; white-space: nowrap; }
+.cp-datepicker__dash { color: var(--cp-text-placeholder); }
+.cp-datepicker__segment { padding: 0 1px; border-radius: var(--cp-radius-2xs); outline: 0; font-variant-numeric: tabular-nums; caret-color: transparent; }
+.cp-datepicker__segment[data-placeholder] { color: var(--cp-text-placeholder); }
+.cp-datepicker__segment[data-focused] { background: var(--cp-surface-action); color: var(--cp-text-on-action); }
+.cp-datepicker__segment[data-type='literal'] { padding: 0; }
+.cp-datepicker__button {
+  display: inline-flex; flex: none; align-items: center; justify-content: center;
+  width: 32px; height: 32px; margin-right: -8px; padding: 0; border: 0; border-radius: var(--cp-radius-pill);
+  background: transparent; color: var(--cp-icon-default); cursor: pointer; outline: 0;
+}
+.cp-datepicker__button[data-hovered] { background: var(--cp-surface-hover); color: var(--cp-icon-on-action-hover-alt); }
+.cp-datepicker__button[data-focus-visible] { outline: 2px solid var(--cp-border-input); outline-offset: -2px; }
+.cp-datepicker__box[data-focus-within] { box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 2px var(--cp-border-input); }
+.cp-datepicker[data-validation='error'] .cp-datepicker__box { box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-error); }
+.cp-datepicker[data-validation='success'] .cp-datepicker__box { box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-success); }
+.cp-datepicker[data-disabled] .cp-datepicker__box { background: var(--cp-surface-disabled); color: var(--cp-text-disabled); box-shadow: 0 0 0 1px var(--cp-border-disabled); cursor: not-allowed; }
+.cp-datepicker__popover { border-radius: var(--cp-radius-lg); box-shadow: var(--cp-shadow-elevation-md), 0 0 0 1px var(--cp-border-default); outline: 0; }
+.cp-datepicker__popover[data-entering] { animation: cp-pop var(--cp-duration-base) var(--cp-easing-standard); }
+.cp-datepicker__dialog { outline: 0; }
+@keyframes cp-pop { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .cp-datepicker__popover[data-entering] { animation: none; } }

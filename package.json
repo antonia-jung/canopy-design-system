@@ -36,6 +36,7 @@
     "react-dom": ">=18"
   },
   "dependencies": {
+    "@internationalized/date": "3.12.4",
     "react-aria-components": "^1.22.1"
   },
   "devDependencies": {

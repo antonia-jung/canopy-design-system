@@ -1,0 +1,111 @@
+.cp-menu {
+  --_item-h: 40px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 100%;
+  padding: 8px;
+  border-radius: var(--cp-radius-lg);
+  background: var(--cp-surface-overlay);
+  box-shadow: var(--cp-shadow-elevation-md), 0 0 0 1px var(--cp-border-default);
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  overflow: hidden;
+}
+.cp-menu__list {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cp-border-input) transparent;
+}
+.cp-menu__section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cp-menu__header {
+  padding: 8px 12px 4px;
+  color: var(--cp-text-caption);
+  font-size: var(--cp-font-size-caption);
+  font-weight: 600;
+  line-height: 16px;
+}
+.cp-menu__sep {
+  height: 1px;
+  margin: 6px 4px;
+  background: var(--cp-border-default);
+}
+.cp-menu__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  min-height: var(--_item-h);
+  padding: 8px 12px;
+  border-radius: var(--cp-radius-md);
+  color: var(--cp-text-body);
+  line-height: 24px;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-menu__item svg { flex: none; color: var(--cp-icon-default); }
+.cp-menu__text { display: flex; flex: 1; flex-direction: column; min-width: 0; }
+.cp-menu__label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-menu__desc { color: var(--cp-text-caption); font-size: var(--cp-font-size-caption); line-height: 16px; }
+.cp-menu__shortcut { color: var(--cp-text-caption); font: inherit; font-size: var(--cp-font-size-caption); }
+.cp-menu__tick { display: inline-flex; width: 20px; height: 20px; }
+.cp-menu__box {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--cp-radius-xs);
+  background: var(--cp-surface-soft-pressed);
+  box-shadow: 0 0 0 1px var(--cp-border-input);
+}
+.cp-menu__box[data-checked] { background: var(--cp-surface-action); box-shadow: none; }
+.cp-menu__box svg { color: var(--cp-icon-on-action); }
+
+.cp-menu__item[data-hovered],
+.cp-menu__item[data-focused] {
+  background: var(--cp-surface-hover);
+  color: var(--cp-text-on-action-hover-alt);
+}
+.cp-menu__item[data-hovered] svg,
+.cp-menu__item[data-focused] svg { color: var(--cp-icon-on-action-hover-alt); }
+.cp-menu__item[data-focus-visible] { outline: 2px solid var(--cp-border-input); outline-offset: -2px; }
+.cp-menu__item[data-pressed] { background: var(--cp-surface-pressed); }
+.cp-menu__item[data-selected]:not([data-hovered], [data-focused]) { background: var(--cp-surface-selected); }
+.cp-menu__item[data-disabled] { color: var(--cp-text-disabled); cursor: not-allowed; }
+.cp-menu__item[data-disabled] svg { color: var(--cp-icon-disabled); }
+
+.cp-menu__search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  margin-bottom: 8px;
+  padding: 0 12px;
+  border-radius: var(--cp-radius-md);
+  background: var(--cp-surface-soft-pressed);
+  box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-input);
+}
+.cp-menu__search svg { color: var(--cp-icon-default); flex: none; }
+.cp-menu__search input {
+  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--cp-text-heading); font: inherit;
+}
+.cp-menu__search:focus-within { box-shadow: 0 0 0 2px var(--cp-border-input); }
+.cp-menu__search input::placeholder { color: var(--cp-text-placeholder); }
+.cp-menu__empty { margin: 0; padding: 16px 12px; text-align: center; color: var(--cp-text-caption); }
+.cp-menu__item .cp-menu__box svg { color: var(--cp-icon-on-action); }
+.cp-menu__item[data-hovered] .cp-menu__box[data-checked],
+.cp-menu__item[data-focused] .cp-menu__box[data-checked] { background: var(--cp-surface-action); box-shadow: 0 0 0 1px var(--cp-icon-on-action); }

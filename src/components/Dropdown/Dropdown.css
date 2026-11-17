@@ -1,0 +1,41 @@
+.cp-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+}
+.cp-dropdown__trigger {
+  appearance: none;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+.cp-dropdown__value { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cp-dropdown__value[data-placeholder] { color: var(--cp-text-placeholder); }
+.cp-dropdown__chevron { transform: rotate(90deg); transition: transform var(--cp-duration-fast) var(--cp-easing-standard); }
+.cp-dropdown[data-open] .cp-dropdown__chevron,
+.cp-dropdown__trigger[aria-expanded='true'] .cp-dropdown__chevron { transform: rotate(-90deg); }
+.cp-dropdown__trigger[data-hovered]:not([data-disabled]) {
+  background-color: var(--cp-surface-hover);
+  box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-action-hover);
+  color: var(--cp-text-on-action-hover-alt);
+}
+.cp-dropdown__trigger[data-hovered]:not([data-disabled]) .cp-dropdown__value[data-placeholder] { color: inherit; }
+.cp-dropdown__trigger[data-focus-visible],
+.cp-dropdown__trigger[aria-expanded='true'] {
+  box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 2px var(--cp-border-input);
+}
+.cp-dropdown__trigger[data-disabled] {
+  background-color: var(--cp-surface-disabled);
+  color: var(--cp-text-disabled);
+  box-shadow: 0 0 0 1px var(--cp-border-disabled);
+  cursor: not-allowed;
+}
+.cp-dropdown[data-validation='error'] .cp-dropdown__trigger { box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-error); }
+.cp-dropdown[data-validation='success'] .cp-dropdown__trigger { box-shadow: var(--cp-shadow-soft-pressed), 0 0 0 1px var(--cp-border-success); }
+.cp-dropdown__popover { width: var(--trigger-width); min-width: 200px; outline: 0; }
+.cp-dropdown__popover .cp-menu { max-height: min(320px, var(--visible-height, 320px)); }
+.cp-dropdown__popover[data-entering] { animation: cp-pop var(--cp-duration-base) var(--cp-easing-standard); }
+@keyframes cp-pop { from { opacity: 0; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { .cp-dropdown__popover[data-entering] { animation: none; } }
