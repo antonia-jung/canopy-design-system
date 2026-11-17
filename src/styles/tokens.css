@@ -342,7 +342,7 @@
   --cp-surface-action-hover-alt: var(--cp-primary-500);
   --cp-surface-hover: var(--cp-primary-500);
   --cp-surface-selected: var(--cp-primary-800);
-  --cp-surface-scrim: #000000a6;
+  --cp-surface-scrim: #000000bf;
   --cp-surface-control: var(--cp-primary-800);
   --cp-surface-raised: var(--cp-primary-600);
   --cp-surface-media: var(--cp-primary-500);
@@ -428,7 +428,7 @@
   --cp-surface-action-hover-alt: var(--cp-primary-500);
   --cp-surface-hover: var(--cp-primary-500);
   --cp-surface-selected: var(--cp-primary-800);
-  --cp-surface-scrim: #000000a6;
+  --cp-surface-scrim: #000000bf;
   --cp-surface-control: var(--cp-primary-800);
   --cp-surface-raised: var(--cp-primary-600);
   --cp-surface-media: var(--cp-primary-500);

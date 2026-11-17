@@ -2086,7 +2086,7 @@ export const tokens = {
         "type": "C",
         "values": [
           "#0d171280",
-          "#000000a6"
+          "#000000bf"
         ]
       },
       {
