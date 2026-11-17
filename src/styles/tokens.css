@@ -340,7 +340,7 @@
   --cp-text-on-action-hover-alt: var(--cp-primary-50);
   --cp-icon-on-action-hover-alt: var(--cp-primary-800);
   --cp-surface-action-hover-alt: var(--cp-primary-700);
-  --cp-surface-hover: var(--cp-primary-600);
+  --cp-surface-hover: var(--cp-primary-500);
   --cp-surface-selected: var(--cp-primary-800);
   --cp-surface-scrim: #000000a6;
   --cp-surface-control: var(--cp-primary-800);
@@ -361,7 +361,7 @@
   --cp-surface-soft-pressed: #08110d;
   --cp-surface-pressed: var(--cp-primary-600);
   --cp-surface-stripe: #2e5243;
-  --cp-surface-hover-strong: var(--cp-primary-600);
+  --cp-surface-hover-strong: var(--cp-primary-400);
   --cp-surface-error-hover: var(--cp-error-800);
   --cp-surface-success-hover: var(--cp-success-800);
   --cp-border-error-hover: var(--cp-error-600);
@@ -426,7 +426,7 @@
   --cp-text-on-action-hover-alt: var(--cp-primary-50);
   --cp-icon-on-action-hover-alt: var(--cp-primary-800);
   --cp-surface-action-hover-alt: var(--cp-primary-700);
-  --cp-surface-hover: var(--cp-primary-600);
+  --cp-surface-hover: var(--cp-primary-500);
   --cp-surface-selected: var(--cp-primary-800);
   --cp-surface-scrim: #000000a6;
   --cp-surface-control: var(--cp-primary-800);
@@ -447,7 +447,7 @@
   --cp-surface-soft-pressed: #08110d;
   --cp-surface-pressed: var(--cp-primary-600);
   --cp-surface-stripe: #2e5243;
-  --cp-surface-hover-strong: var(--cp-primary-600);
+  --cp-surface-hover-strong: var(--cp-primary-400);
   --cp-surface-error-hover: var(--cp-error-800);
   --cp-surface-success-hover: var(--cp-success-800);
   --cp-border-error-hover: var(--cp-error-600);
