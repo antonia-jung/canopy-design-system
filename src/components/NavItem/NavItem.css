@@ -62,7 +62,7 @@
   background: var(--cp-surface-soft);
   box-shadow: var(--cp-shadow-soft-raised);
 }
-.cp-nav-item[data-orientation='vertical'][data-hovered]:not([data-in-blob]) {
+.cp-nav-item[data-orientation='vertical'][data-hovered]:not([data-in-blob][data-selected]) {
   background: var(--cp-surface-hover);
 }
 .cp-nav-item[data-icon-only] {

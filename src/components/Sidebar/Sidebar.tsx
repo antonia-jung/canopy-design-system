@@ -31,30 +31,19 @@ export function Sidebar({ logo, items, currentId, onCurrentChange, footer, defau
   const [current, setCurrent] = useState(currentId);
   useEffect(() => setCurrent(currentId), [currentId]);
 
-  // Zwei Blobs: einer folgt dem Hover, einer markiert den gewählten Eintrag
-  const [hover, setHover] = useState<number | null>(null);
+  // Ein Blob markiert den gewählten Eintrag und wandert beim Klick
   const [resizing, setResizing] = useState(false);
   const [tick, setTick] = useState(0);
   const nav = useRef<HTMLDivElement>(null);
-  const hoverBlob = useRef<HTMLSpanElement>(null);
   const selectBlob = useRef<HTMLSpanElement>(null);
   const refs = useRef<(HTMLAnchorElement | null)[]>([]);
-  const lastHover = useRef(0);
-  const wasIdle = useRef(true);
   const lastTick = useRef(tick);
   const selectedIndex = items.findIndex((i) => i.id === current);
-  if (hover !== null) lastHover.current = hover;
-  // Springt ohne Bewegung: wenn der Hover-Blob erst sichtbar wird oder sich die Breite geändert hat
+  // Nach einer Breitenänderung springt der Blob ohne Bewegung an die neue Stelle
   const resized = lastTick.current !== tick;
   lastTick.current = tick;
-  const hoverTeleport = (hover !== null && wasIdle.current) || resized;
-  wasIdle.current = hover === null;
-
-  useBlob(hoverBlob, nav, () => refs.current[lastHover.current] ?? null, `${hover ?? `idle-${lastHover.current}`}-${tick}`, {
-    axis: 'y',
-    teleport: hoverTeleport,
-  });
   useBlob(selectBlob, nav, () => refs.current[selectedIndex] ?? null, `${current}-${tick}`, { axis: 'y', teleport: resized });
+
   return (
     <aside
       className="cp-sidebar"
@@ -84,15 +73,7 @@ export function Sidebar({ logo, items, currentId, onCurrentChange, footer, defau
         <div
           ref={nav}
           className="cp-sidebar__items"
-          data-hovering={hover !== null || undefined}
-          onMouseLeave={() => setHover(null)}
-          onPointerOver={(e) => {
-            const a = (e.target as HTMLElement).closest('a');
-            const i = a ? refs.current.indexOf(a as HTMLAnchorElement) : -1;
-            if (i >= 0 && e.pointerType !== 'touch') setHover(i);
-          }}
         >
-        <span ref={hoverBlob} className="cp-blob cp-sidebar__blob-hover" aria-hidden="true" style={{ top: 0, left: 0 }} />
         <span ref={selectBlob} className="cp-blob cp-sidebar__blob-selected" aria-hidden="true" data-visible={selectedIndex >= 0 || undefined} style={{ top: 0, left: 0 }} />
         <ul className="cp-sidebar__nav">
           {items.map((it, i) => (
@@ -107,9 +88,6 @@ export function Sidebar({ logo, items, currentId, onCurrentChange, footer, defau
                 iconOnly={collapsed}
                 inBlob
                 isSelected={it.id === current}
-                onHoverStart={() => setHover(i)}
-                onFocus={() => setHover(i)}
-                onBlur={() => setHover(null)}
                 onPress={() => {
                   setCurrent(it.id);
                   onCurrentChange?.(it.id);
