@@ -18,3 +18,14 @@
 }
 .cp-alert__close[data-hovered] { color: var(--cp-text-heading); }
 .cp-alert__close[data-focus-visible] { outline: 2px solid var(--cp-border-action); outline-offset: 2px; }
+
+/* Buttons im Alert übernehmen die Farbe des Intents statt Grün und Sand */
+.cp-alert:not([data-intent='default']) {
+  --cp-outline-text: var(--_tt);
+  --cp-outline-icon: var(--_ic);
+  --cp-outline-border: var(--_bd);
+  --cp-outline-hover: color-mix(in srgb, var(--_bd) 26%, var(--_bg));
+  --cp-outline-pressed: color-mix(in srgb, var(--_bd) 42%, var(--_bg));
+  --cp-outline-sheen: transparent;
+  --cp-outline-shade: transparent;
+}
