@@ -31,7 +31,7 @@ export const sampleLichtung = svg(
   '#dbe6d0',
 );
 
-export const sampleKaesslight = svg(
+export const sampleRhythmus = svg(
   `${Array.from({ length: 14 }, (_, i) => `<rect x="${30 + i * 42}" y="${250 - (Math.sin(i * 1.3) + 1.4) * 70}" width="26" height="${110 + (Math.sin(i * 1.3) + 1.4) * 70}" rx="13" fill="${i % 3 === 0 ? '#1f4d3a' : i % 3 === 1 ? '#5f8a6c' : '#9db78f'}"/>`).join('')}
    <circle cx="540" cy="70" r="30" fill="#f1e3b0"/>`,
   '#e3ecd8',

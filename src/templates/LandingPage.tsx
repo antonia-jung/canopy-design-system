@@ -3,7 +3,7 @@ import { Button } from '../components/Button/Button';
 import { Card } from '../components/Card/Card';
 import { ImageFrame } from '../components/ImageFrame/ImageFrame';
 import { Avatar } from '../components/Avatar/Avatar';
-import { sampleHero, sampleCanopy, sampleLichtung, sampleKaesslight } from './sampleImages';
+import { sampleHero, sampleCanopy, sampleLichtung, sampleRhythmus } from './sampleImages';
 
 export interface LandingProject { id: string; title: string; description: string; href?: string; image?: string }
 
@@ -15,7 +15,7 @@ export interface LandingPageProps {
 const defaultProjects: LandingProject[] = [
   { id: 'canopy', title: 'Canopy System', description: 'Komponentenbibliothek mit Tokens und Dokumentation.', image: sampleCanopy },
   { id: 'lichtung', title: 'Lichtung App', description: 'UX-Konzept, Prototyp und Usability-Test.', image: sampleLichtung },
-  { id: 'kaesslight', title: 'Kaesslight', description: 'Website-Konzeption und Design für eine Live-Band.', image: sampleKaesslight },
+  { id: 'atelier', title: 'Atelier Nord', description: 'Website-Konzeption und Design für ein Kreativstudio.', image: sampleRhythmus },
 ];
 
 /** Startseite: Hero, ausgewählte Projekte, Kurzvorstellung und Einladung zum Kontakt. */

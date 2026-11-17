@@ -10,7 +10,7 @@ const columns = [
 ];
 const rows: TableRow[] = [
   { id: '1', name: 'Canopy', role: 'Design System', year: '2026', status: <Badge intent="success">Live</Badge> },
-  { id: '2', name: 'Kaesslight', role: 'Website', year: '2026', status: <Badge intent="info">Läuft</Badge> },
+  { id: '2', name: 'Atelier Nord', role: 'Website', year: '2026', status: <Badge intent="info">Läuft</Badge> },
   { id: '3', name: 'e-Xplore', role: 'UI/UX', year: '2025', status: <Badge intent="success">Live</Badge> },
   { id: '4', name: 'Sammel-App', role: 'Konzept', year: '2026', status: <Badge intent="warning">Idee</Badge> },
 ];

@@ -7,14 +7,14 @@ export const searchItems: SearchItem[] = [
   { id: '2', title: 'Fallstudie: Lichtung App', description: 'UX-Konzept und Prototyp', category: 'Projekte' },
   { id: '3', title: 'Artikel: Tokens in Figma', description: 'Warum Abstände konstant bleiben', category: 'Artikel', icon: 'list' },
   { id: '4', title: 'Über mich', description: 'Designerin und Entwicklerin in Leipzig', category: 'Artikel', icon: 'person' },
-  { id: '5', title: 'Kaesslight Website', description: 'Konzeption und Design für eine Live-Band', category: 'Projekte' },
+  { id: '5', title: 'Atelier-Nord-Website', description: 'Konzeption und Design für ein Kreativstudio', category: 'Projekte' },
   { id: '6', title: 'Artikel: Blob-Bewegung im Code', description: 'Federn statt Zwischenzustände', category: 'Artikel', icon: 'list' },
 ];
 
 export const galleryItems: GalleryItem[] = [
   { id: '1', title: 'Canopy System', description: 'Komponentenbibliothek mit Tokens und Dokumentation.', category: 'Systeme', href: '#canopy' },
   { id: '2', title: 'Lichtung App', description: 'UX-Konzept, Prototyp und Usability-Test.', category: 'Apps', href: '#lichtung' },
-  { id: '3', title: 'Kaesslight', description: 'Website-Konzeption und Design für eine Live-Band.', category: 'Websites', href: '#kaesslight' },
+  { id: '3', title: 'Atelier Nord', description: 'Website-Konzeption und Design für ein Kreativstudio.', category: 'Websites', href: '#atelier' },
   { id: '4', title: 'Stadt-App', description: 'Veranstaltungen, Busse und Öffnungszeiten.', category: 'Apps', href: '#stadt' },
   { id: '5', title: 'Sammel-App', description: 'Alltägliches sammeln wie Karten.', category: 'Apps', href: '#sammeln' },
   { id: '6', title: 'Portfolio', description: 'Das Spiel-Thema für diese Seite.', category: 'Websites', href: '#portfolio' },
