@@ -1,0 +1,23 @@
+.cp-table-wrap { overflow-x: auto; border-radius: var(--cp-radius-lg); background: var(--cp-surface-soft); box-shadow: var(--cp-shadow-soft-raised); }
+.cp-table { --_h: 40px; width: 100%; border-collapse: collapse; font-family: var(--cp-font-family-body), system-ui, sans-serif; font-size: var(--cp-font-size-paragraph-medium); color: var(--cp-text-body); outline: 0; }
+.cp-table[data-size='S'] { --_h: 32px; }
+.cp-table[data-size='L'] { --_h: 48px; }
+.cp-table__th, .cp-table__td { height: var(--_h); padding: 0 16px; text-align: left; border-bottom: 1px solid var(--cp-border-default); outline: 0; }
+.cp-table__th { background: var(--cp-surface-sunken); color: var(--cp-text-heading); font-weight: 600; white-space: nowrap; }
+.cp-table__th[data-align='right'], .cp-table__td[data-align='right'] { text-align: right; }
+.cp-table__th[data-align='center'], .cp-table__td[data-align='center'] { text-align: center; }
+.cp-table__th[data-align='right'] .cp-table__th-inner { flex-direction: row-reverse; }
+.cp-table__th-inner { display: inline-flex; align-items: center; gap: 8px; }
+.cp-table__th[data-sortable] { cursor: pointer; }
+.cp-table__th[data-hovered] { background: var(--cp-surface-hover-strong); }
+.cp-table__sort { color: var(--cp-icon-default); transition: transform var(--cp-duration-fast) var(--cp-easing-standard); transform: rotate(90deg); opacity: 0.4; }
+.cp-table__sort[data-dir='ascending'] { transform: rotate(-90deg); opacity: 1; }
+.cp-table__sort[data-dir='descending'] { transform: rotate(90deg); opacity: 1; }
+.cp-table__select { width: 40px; padding: 0 8px; }
+.cp-table__row { outline: 0; transition: background-color var(--cp-duration-fast) var(--cp-easing-standard); }
+.cp-table[data-striped] .cp-table__row:nth-child(even) { background: var(--cp-surface-sunken); }
+.cp-table__row[data-hovered] { background: var(--cp-surface-hover); color: var(--cp-text-on-action-hover-alt); }
+.cp-table__row[data-selected] { background: var(--cp-surface-selected); }
+.cp-table__row[data-focus-visible], .cp-table__th[data-focus-visible], .cp-table__td[data-focus-visible] { outline: 2px solid var(--cp-border-action); outline-offset: -2px; }
+.cp-table__empty { padding: 32px 16px; text-align: center; color: var(--cp-text-caption); }
+.cp-table__select .cp-checkbox { min-height: 0; height: 100%; align-items: center; }

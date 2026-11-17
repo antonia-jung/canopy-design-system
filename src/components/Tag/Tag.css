@@ -1,0 +1,41 @@
+.cp-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+  border-radius: var(--cp-radius-pill);
+  background: var(--cp-surface-soft);
+  box-shadow: var(--cp-shadow-soft-raised);
+  color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-paragraph-medium);
+  transition: background-color var(--cp-duration-fast) var(--cp-easing-standard), box-shadow var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-tag__main {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--cp-radius-pill);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: default;
+  outline: 0;
+}
+button.cp-tag__main { cursor: pointer; }
+.cp-tag[data-removable] .cp-tag__main { padding-right: 4px; }
+.cp-tag__remove {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; margin-right: 4px; padding: 0; border: 0; border-radius: var(--cp-radius-pill);
+  background: transparent; color: var(--cp-icon-action); cursor: pointer; outline: 0;
+}
+.cp-tag__remove[data-hovered] { background: var(--cp-surface-hover); color: var(--cp-icon-on-action-hover-alt); }
+.cp-tag__remove[data-focus-visible], .cp-tag__main[data-focus-visible] { outline: 2px solid var(--cp-border-action); outline-offset: 2px; }
+.cp-tag:has(.cp-tag__main[data-hovered]) { background: var(--cp-surface-hover); box-shadow: var(--cp-shadow-soft-hover); color: var(--cp-text-on-action-hover-alt); }
+.cp-tag:has(.cp-tag__main[data-pressed]),
+.cp-tag:has(.cp-tag__main[data-selected]) { background: var(--cp-surface-soft-pressed); box-shadow: var(--cp-shadow-soft-pressed); }
+.cp-tag:has(.cp-tag__main[data-selected]) { color: var(--cp-text-action); font-weight: 600; }
+.cp-tag[data-disabled] { background: var(--cp-surface-disabled); box-shadow: none; color: var(--cp-text-disabled); }
+.cp-tag[data-disabled] .cp-tag__remove { color: var(--cp-icon-disabled); cursor: not-allowed; }

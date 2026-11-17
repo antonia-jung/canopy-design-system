@@ -1,0 +1,5 @@
+.cp-progress { display: flex; flex-direction: column; gap: 8px; width: 100%; font-family: var(--cp-font-family-body), system-ui, sans-serif; color: var(--cp-text-body); font-size: var(--cp-font-size-paragraph-small); }
+.cp-progress__head { display: flex; justify-content: space-between; }
+.cp-progress__value { font-variant-numeric: tabular-nums; color: var(--cp-text-caption); }
+.cp-progress__track { height: 8px; border-radius: var(--cp-radius-pill); background: var(--cp-surface-soft-pressed); box-shadow: var(--cp-shadow-soft-pressed); overflow: hidden; }
+.cp-progress__fill { height: 100%; border-radius: var(--cp-radius-pill); background: var(--cp-surface-action); transition: width var(--cp-duration-slow) var(--cp-easing-standard); }

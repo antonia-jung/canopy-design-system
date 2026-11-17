@@ -1,0 +1,18 @@
+.cp-pagination { font-family: var(--cp-font-family-body), system-ui, sans-serif; color: var(--cp-text-body); }
+.cp-pagination[data-type='compact'] { display: inline-flex; align-items: center; gap: 24px; }
+.cp-pagination__row { position: relative; display: inline-flex; align-items: center; gap: 8px; }
+.cp-pagination__blob { background: var(--cp-surface-soft); box-shadow: var(--cp-shadow-soft-raised); border-radius: var(--cp-radius-pill); }
+.cp-pagination__page, .cp-pagination__arrow, .cp-pagination__gap {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+  box-sizing: border-box; height: 32px; padding: 0; border: 0; background: transparent; color: var(--cp-text-heading); font: inherit; outline: 0;
+}
+.cp-pagination__page { min-width: 32px; padding: 0 8px; border-radius: var(--cp-radius-pill); cursor: pointer; transition: background-color var(--cp-duration-fast) var(--cp-easing-standard); }
+.cp-pagination__page[aria-current='page'] { color: var(--cp-text-action); font-weight: 600; }
+.cp-pagination__page[data-hovered]:not([aria-current='page']) { background: var(--cp-surface-hover-strong); }
+.cp-pagination__arrow { width: 44px; border-radius: var(--cp-radius-pill); background: var(--cp-surface-soft); box-shadow: var(--cp-shadow-soft-raised); color: var(--cp-icon-action); cursor: pointer; transition: transform var(--cp-duration-fast) var(--cp-easing-standard); }
+.cp-pagination__arrow[data-hovered] { background: var(--cp-surface-hover); box-shadow: var(--cp-shadow-soft-hover); color: var(--cp-icon-on-action-hover-alt); }
+.cp-pagination__arrow[data-pressed] { background: var(--cp-surface-soft-pressed); box-shadow: var(--cp-shadow-soft-pressed); }
+.cp-pagination__arrow[data-disabled] { background: var(--cp-surface-disabled); box-shadow: none; color: var(--cp-icon-disabled); cursor: not-allowed; }
+.cp-pagination__page[data-focus-visible], .cp-pagination__arrow[data-focus-visible] { outline: 2px solid var(--cp-border-action); outline-offset: 2px; }
+.cp-pagination__gap { width: 32px; color: var(--cp-icon-default); }
+.cp-pagination__status { font-size: var(--cp-font-size-paragraph-medium); }

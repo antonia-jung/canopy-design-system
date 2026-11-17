@@ -1,0 +1,25 @@
+.cp-badge {
+  --_bg: var(--cp-surface-action);
+  --_fg: var(--cp-text-on-action);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--cp-radius-pill);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  font-size: var(--cp-font-size-caption);
+  font-weight: 600;
+  line-height: 16px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cp-badge[data-type='dot'] { min-width: 0; width: 12px; height: 12px; padding: 0; }
+.cp-badge[data-intent='error'] { --_bg: var(--cp-icon-error); --_fg: var(--cp-text-on-intent); }
+.cp-badge[data-intent='success'] { --_bg: var(--cp-icon-success); --_fg: var(--cp-text-on-intent); }
+.cp-badge[data-intent='info'] { --_bg: var(--cp-icon-information); --_fg: var(--cp-text-on-intent); }
+.cp-badge[data-intent='warning'] { --_bg: var(--cp-icon-warning); --_fg: var(--cp-text-heading); }
