@@ -14,15 +14,21 @@ export interface StepperProps {
   current: number;
   /** Index eines Schritts mit Fehler */
   errorAt?: number;
+  /**
+   * horizontal: Schritte nebeneinander. vertical: untereinander, für Mobile.
+   * auto (Standard): untereinander, wenn der Platz schmaler als 768 px ist.
+   */
+  orientation?: 'horizontal' | 'vertical' | 'auto';
   'aria-label'?: string;
 }
 
 /** Zeigt den Fortschritt durch einen mehrstufigen Ablauf. */
-export function Stepper({ steps, current, errorAt, 'aria-label': label = 'Fortschritt' }: StepperProps) {
+export function Stepper({ steps, current, errorAt, orientation = 'auto', 'aria-label': label = 'Fortschritt' }: StepperProps) {
   const statusOf = (i: number) => (i === errorAt ? 'error' : i < current ? 'complete' : i === current ? 'current' : 'upcoming');
   const text = { complete: 'abgeschlossen', current: 'aktuell', upcoming: 'offen', error: 'Fehler' } as const;
   return (
-    <ol className="cp-stepper" aria-label={label}>
+    <div className="cp-container">
+    <ol className="cp-stepper" aria-label={label} data-orientation={orientation}>
       {steps.map((s, i) => {
         const st = statusOf(i);
         return (
@@ -47,5 +53,6 @@ export function Stepper({ steps, current, errorAt, 'aria-label': label = 'Fortsc
         );
       })}
     </ol>
+    </div>
   );
 }

@@ -70,3 +70,39 @@
 .cp-stepper__connector[data-done] {
   background: var(--cp-surface-action);
 }
+
+/* Vertikal (Mobile): Schritte untereinander, die Linie läuft senkrecht durch die Indikatoren */
+.cp-stepper[data-orientation='vertical'] {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.cp-stepper[data-orientation='vertical'] .cp-step {
+  white-space: normal;
+}
+.cp-stepper[data-orientation='vertical'] .cp-stepper__connector {
+  flex: none;
+  width: 2px;
+  min-width: 0;
+  height: 24px;
+  /* Mitte des 32 px großen Indikators */
+  margin-left: 15px;
+}
+@container cp (max-width: 767px) {
+  .cp-stepper[data-orientation='auto'] {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .cp-stepper[data-orientation='auto'] .cp-step {
+    white-space: normal;
+  }
+  .cp-stepper[data-orientation='auto'] .cp-stepper__connector {
+    flex: none;
+    width: 2px;
+    min-width: 0;
+    height: 24px;
+    /* Mitte des 32 px großen Indikators */
+    margin-left: 15px;
+  }
+}
