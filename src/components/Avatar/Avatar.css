@@ -1,0 +1,29 @@
+.cp-avatar {
+  --_s: 40px; --_r: var(--cp-radius-pill); --_fs: var(--cp-font-size-paragraph-medium);
+  box-sizing: border-box; flex: none; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;
+  width: var(--_s); height: var(--_s); border-radius: var(--_r);
+  background: var(--cp-surface-control); box-shadow: inset 0 0 0 1px var(--cp-surface-sunken);
+  color: var(--cp-text-body); font-family: var(--cp-font-family-body), system-ui, sans-serif; font-size: var(--_fs); line-height: 1; user-select: none;
+}
+.cp-avatar[data-size='XS'] { --_s: 24px; --_fs: 10px; }
+.cp-avatar[data-size='S'] { --_s: 32px; --_fs: var(--cp-font-size-caption); }
+.cp-avatar[data-size='L'] { --_s: 56px; --_fs: var(--cp-font-size-paragraph-large); }
+.cp-avatar[data-size='XL'] { --_s: 72px; --_fs: 28px; }
+.cp-avatar[data-shape='rounded'] { --_r: var(--cp-radius-sm); }
+.cp-avatar[data-shape='rounded'][data-size='XS'], .cp-avatar[data-shape='rounded'][data-size='S'] { --_r: var(--cp-radius-xs); }
+.cp-avatar[data-shape='rounded'][data-size='XL'] { --_r: var(--cp-radius-lg); }
+.cp-avatar__img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.cp-avatarlabel { display: inline-flex; align-items: center; gap: 12px; font-family: var(--cp-font-family-body), system-ui, sans-serif; }
+.cp-avatarlabel__text { display: flex; flex-direction: column; gap: 2px; }
+.cp-avatarlabel__name { color: var(--cp-text-body); font-size: var(--cp-font-size-paragraph-medium); }
+.cp-avatarlabel__secondary { color: var(--cp-text-caption); font-size: var(--cp-font-size-paragraph-small); }
+.cp-avatarlabel[data-size='S'] .cp-avatarlabel__name { font-size: var(--cp-font-size-caption); }
+.cp-avatarlabel[data-size='S'] .cp-avatarlabel__secondary { font-size: var(--cp-font-size-caption); }
+.cp-avatarlabel[data-size='L'] .cp-avatarlabel__name { font-size: var(--cp-font-size-paragraph-large); }
+
+.cp-avatargroup { --_o: -8px; display: inline-flex; align-items: center; }
+.cp-avatargroup[data-size='S'] { --_o: -6px; }
+.cp-avatargroup[data-size='L'] { --_o: -12px; }
+.cp-avatargroup > .cp-avatar + .cp-avatar { margin-inline-start: var(--_o); }
+.cp-avatargroup > .cp-avatar { box-shadow: inset 0 0 0 1px var(--cp-surface-sunken), 0 0 0 2px var(--cp-surface-raised); }

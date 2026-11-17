@@ -1,0 +1,23 @@
+.cp-list { list-style: none; margin: 0; padding: 0; width: 100%; max-width: 360px; }
+.cp-listitem { position: relative; }
+.cp-listitem[data-divider]::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--cp-border-default); }
+.cp-listitem__row {
+  box-sizing: border-box; display: flex; align-items: center; gap: 16px; width: 100%; padding: 16px 24px; margin: 0;
+  border: 0; border-radius: var(--cp-radius-sm); background: transparent; text-align: start; text-decoration: none; cursor: default; outline: 0;
+  font-family: var(--cp-font-family-body), system-ui, sans-serif; color: var(--cp-text-heading);
+  transition: background-color var(--cp-duration-fast) var(--cp-easing-standard);
+}
+button.cp-listitem__row, a.cp-listitem__row { cursor: pointer; }
+.cp-listitem__leading, .cp-listitem__trailing { flex: none; display: inline-flex; align-items: center; color: var(--cp-icon-default); }
+.cp-listitem__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cp-listitem__title { font-size: var(--cp-font-size-paragraph-medium); line-height: 1.3; }
+.cp-listitem__description { color: var(--cp-text-caption); font-size: var(--cp-font-size-paragraph-small); }
+.cp-listitem__row[data-hovered] { background: var(--cp-surface-overlay); box-shadow: inset 0 0 0 1px var(--cp-border-default); }
+.cp-listitem__row[data-selected] { background: var(--cp-surface-action-hover-alt); }
+.cp-listitem__row[data-selected] .cp-listitem__title { color: var(--cp-text-action); }
+.cp-listitem__row[data-selected][data-hovered] { background: var(--cp-surface-sunken); box-shadow: none; }
+.cp-listitem__row[data-focus-visible] { outline: 2px solid var(--cp-border-action); outline-offset: -2px; }
+.cp-listitem__row[data-disabled] { background: transparent; box-shadow: none; cursor: not-allowed; }
+.cp-listitem__row[data-disabled] .cp-listitem__title, .cp-listitem__row[data-disabled] .cp-listitem__description, .cp-listitem__row[data-disabled] .cp-listitem__leading, .cp-listitem__row[data-disabled] .cp-listitem__trailing { color: var(--cp-text-disabled); }
+.cp-listitem__row[data-disabled][data-selected] { background: var(--cp-surface-action-hover-alt); }
+@media (prefers-reduced-motion: reduce) { .cp-listitem__row { transition: none; } }

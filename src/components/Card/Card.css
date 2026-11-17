@@ -1,0 +1,27 @@
+.cp-card {
+  position: relative; box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden;
+  width: 100%; max-width: 320px; border-radius: var(--cp-radius-lg);
+  background: var(--cp-surface-raised); color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif;
+  transition: box-shadow var(--cp-duration-base) var(--cp-easing-standard);
+}
+.cp-card[data-direction='horizontal'] { flex-direction: row; max-width: 480px; }
+.cp-card[data-variant='outline'] { background: var(--cp-surface-overlay); box-shadow: inset 0 0 0 1px var(--cp-border-default); }
+.cp-card[data-variant='elevated'] { background: var(--cp-surface-overlay); box-shadow: var(--cp-shadow-elevation-md); }
+.cp-card__media { flex: none; }
+.cp-card__media > * { display: block; width: 100%; }
+.cp-card[data-direction='vertical'] .cp-card__media { height: 180px; overflow: hidden; }
+.cp-card[data-direction='horizontal'] .cp-card__media { width: 160px; }
+.cp-card[data-direction='horizontal'] .cp-card__media > * { height: 100%; object-fit: cover; }
+.cp-card__media .cp-imageframe { height: 100%; aspect-ratio: auto; border-radius: 0; }
+.cp-card__body { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; min-width: 0; }
+.cp-card__title { margin: 0; color: var(--cp-text-heading); font-family: var(--cp-font-family-heading), system-ui, sans-serif; font-size: var(--cp-font-size-paragraph-large); font-weight: var(--cp-font-weight-semibold); line-height: 1.3; }
+.cp-card__description { margin: 0; font-size: var(--cp-font-size-paragraph-small); line-height: 1.5; }
+.cp-card__link { color: inherit; text-decoration: none; outline: 0; }
+/* Ganze Fläche klickbar */
+.cp-card__link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.cp-card__action { position: relative; z-index: 1; }
+.cp-card[data-interactive]:hover { box-shadow: inset 0 0 0 2px var(--cp-border-action-hover); }
+.cp-card[data-interactive][data-variant='elevated']:hover { box-shadow: var(--cp-shadow-elevation-lg), inset 0 0 0 2px var(--cp-border-action-hover); }
+.cp-card[data-interactive]:has(.cp-card__link[data-focus-visible]) { outline: 2px solid var(--cp-border-action); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .cp-card { transition: none; } }
