@@ -14,10 +14,10 @@ export interface SearchBoxProps extends Omit<SearchFieldProps, 'className' | 'st
 /** Suchfeld mit Lupe, Löschen-Button und optionalem Tastenkürzel. Escape leert das Feld, Enter löst onSubmit aus. */
 export function SearchBox({ placeholder = 'Suchen', shortcut, 'aria-label': ariaLabel, ...rest }: SearchBoxProps) {
   return (
-    <SearchField {...rest} aria-label={ariaLabel ?? placeholder} className="cp-searchbox">
+    <SearchField {...rest} type="text" aria-label={ariaLabel ?? placeholder} className="cp-searchbox">
       <div className="cp-fieldbox">
         <Icon name="search" />
-        <AriaInput className="cp-fieldbox__input" placeholder={placeholder} />
+        <AriaInput className="cp-fieldbox__input" placeholder={placeholder} role="searchbox" />
         <AriaButton className="cp-searchbox__clear" aria-label="Eingabe löschen">
           <Icon name="close" />
         </AriaButton>

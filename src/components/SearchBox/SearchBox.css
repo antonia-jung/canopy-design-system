@@ -53,7 +53,12 @@
   opacity: 0.5;
 }
 
-/* Das eingebaute Löschen-Kreuz des Browsers ausblenden: die Search Box bringt ihren eigenen Button mit */
+/* Das Feld ist type="text" mit role="searchbox", damit Safari und Chrome kein eigenes Löschen-Kreuz einblenden.
+   Die Regeln darunter sichern das zusätzlich ab. */
+.cp-searchbox .cp-fieldbox__input {
+  -webkit-appearance: none;
+  appearance: none;
+}
 .cp-searchbox .cp-fieldbox__input::-webkit-search-cancel-button,
 .cp-searchbox .cp-fieldbox__input::-webkit-search-decoration {
   -webkit-appearance: none;
