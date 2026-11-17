@@ -44,3 +44,9 @@ export { Pagination, pageItems, type PaginationProps } from './components/Pagina
 export { SnackBar, type SnackBarProps } from './components/SnackBar/SnackBar';
 export { Table, type TableProps, type TableColumn, type TableRow } from './components/Table/Table';
 export { Carousel, type CarouselProps } from './components/Carousel/Carousel';
+export { Divider, type DividerProps } from './components/Divider/Divider';
+export { ImageFrame, type ImageFrameProps } from './components/ImageFrame/ImageFrame';
+export { Tooltip, type TooltipProps } from './components/Tooltip/Tooltip';
+export { Kbd, type KbdProps } from './components/Kbd/Kbd';
+export { SkipLink, type SkipLinkProps } from './components/SkipLink/SkipLink';
+export { Skeleton, type SkeletonProps } from './components/Skeleton/Skeleton';

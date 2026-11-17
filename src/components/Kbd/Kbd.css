@@ -1,0 +1,9 @@
+.cp-kbd {
+  display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box;
+  min-width: 24px; height: 24px; padding: 0 8px; border-radius: var(--cp-radius-xs);
+  background: var(--cp-surface-soft); box-shadow: var(--cp-shadow-soft-raised); color: var(--cp-text-body);
+  font-family: var(--cp-font-family-body), system-ui, sans-serif; font-size: var(--cp-font-size-paragraph-small); line-height: 1;
+  transition: background-color var(--cp-duration-fast) var(--cp-easing-standard), box-shadow var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-kbd[data-size='S'] { min-width: 20px; height: 20px; padding: 0 6px; font-size: var(--cp-font-size-caption); }
+.cp-kbd[data-pressed] { background: var(--cp-surface-soft-pressed); box-shadow: var(--cp-shadow-soft-pressed); }
