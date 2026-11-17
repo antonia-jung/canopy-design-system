@@ -18,3 +18,4 @@ export { Footer, type FooterProps, type FooterColumn } from './components/Footer
 export { Sidebar, type SidebarProps, type SidebarItem } from './components/Sidebar/Sidebar';
 export { Stepper, type StepperProps, type StepDef } from './components/Stepper/Stepper';
 export { BottomNavigation, type BottomNavigationProps, type BottomNavItem } from './components/BottomNavigation/BottomNavigation';
+export { NavList, type NavListProps, type NavListItem } from './components/NavList/NavList';

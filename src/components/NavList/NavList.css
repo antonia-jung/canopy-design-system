@@ -1,0 +1,16 @@
+.cp-nav-list {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+/* Blob: wandert beim Hover von Eintrag zu Eintrag */
+.cp-nav-list .cp-blob {
+  background: var(--cp-surface-hover);
+  border-radius: var(--cp-radius-pill);
+  opacity: 0;
+  transition: opacity var(--cp-duration-fast) var(--cp-easing-standard);
+}
+.cp-nav-list[data-active] .cp-blob {
+  opacity: 1;
+}

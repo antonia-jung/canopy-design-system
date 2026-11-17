@@ -24,22 +24,6 @@
 .cp-header__spacer {
   flex: 1;
 }
-.cp-header__nav {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-/* Blob: wandert beim Hover von Eintrag zu Eintrag */
-.cp-header__nav .cp-blob {
-  background: var(--cp-surface-hover);
-  border-radius: var(--cp-radius-pill);
-  opacity: 0;
-  transition: opacity var(--cp-duration-fast) var(--cp-easing-standard);
-}
-.cp-header__nav[data-active] .cp-blob {
-  opacity: 1;
-}
 .cp-header__menu-button {
   display: none;
 }
