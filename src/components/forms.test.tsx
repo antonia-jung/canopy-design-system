@@ -186,3 +186,18 @@ describe('Stufe 2', () => {
     expect(onChange).toHaveBeenCalledWith({ n: 2 });
   });
 });
+
+describe('Dropdown mit Suche', () => {
+  it('filtert und wählt mit Enter den ersten Treffer', async () => {
+    const { Dropdown } = await import('./Dropdown/Dropdown');
+    const user = userEvent.setup();
+    const onChange = vi.fn();
+    render(<Dropdown label="Land" searchable onSelectionChange={onChange} groups={[{ items: [{ id: 'de', label: 'Deutschland' }, { id: 'fr', label: 'Frankreich' }, { id: 'it', label: 'Italien' }] }]} />);
+    await user.click(screen.getByRole('button', { name: /Bitte wählen/ }));
+    await user.type(await screen.findByRole('textbox', { name: 'Einträge filtern' }), 'fran');
+    expect(screen.queryByRole('option', { name: 'Italien' })).toBeNull();
+    await user.keyboard('{Enter}');
+    expect(onChange).toHaveBeenCalledWith('fr');
+    expect(screen.queryByRole('textbox', { name: 'Einträge filtern' })).toBeNull();
+  });
+});

@@ -29,6 +29,9 @@ export const Uebersicht: Story = {
           {(['S', 'M', 'L'] as const).map((s) => <Dropdown key={s} size={s} label={`Größe ${s}`} groups={groups} />)}
         </div>
       </Section>
+      <Section title="Mit Suche">
+        <div style={{ width: 320 }}><Dropdown label="Land" searchable groups={[{ items: ['Deutschland', 'Dänemark', 'Frankreich', 'Italien', 'Österreich', 'Polen', 'Schweiz', 'Spanien'].map((l) => ({ id: l, label: l })) }]} /></div>
+      </Section>
       <Section title="Zustände">
         <div style={{ display: 'grid', gap: 16, width: 320 }}>
           <Dropdown label="Mit Wert" groups={groups} defaultSelectedKey="ui" />
