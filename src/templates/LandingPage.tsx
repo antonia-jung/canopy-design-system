@@ -3,6 +3,7 @@ import { Button } from '../components/Button/Button';
 import { Card } from '../components/Card/Card';
 import { ImageFrame } from '../components/ImageFrame/ImageFrame';
 import { Avatar } from '../components/Avatar/Avatar';
+import { sampleHero, sampleCanopy, sampleLichtung, sampleKaesslight } from './sampleImages';
 
 export interface LandingProject { id: string; title: string; description: string; href?: string; image?: string }
 
@@ -12,9 +13,9 @@ export interface LandingPageProps {
 }
 
 const defaultProjects: LandingProject[] = [
-  { id: 'canopy', title: 'Canopy System', description: 'Komponentenbibliothek mit Tokens und Dokumentation.' },
-  { id: 'lichtung', title: 'Lichtung App', description: 'UX-Konzept, Prototyp und Usability-Test.' },
-  { id: 'kaesslight', title: 'Kaesslight', description: 'Website-Konzeption und Design für eine Live-Band.' },
+  { id: 'canopy', title: 'Canopy System', description: 'Komponentenbibliothek mit Tokens und Dokumentation.', image: sampleCanopy },
+  { id: 'lichtung', title: 'Lichtung App', description: 'UX-Konzept, Prototyp und Usability-Test.', image: sampleLichtung },
+  { id: 'kaesslight', title: 'Kaesslight', description: 'Website-Konzeption und Design für eine Live-Band.', image: sampleKaesslight },
 ];
 
 /** Startseite: Hero, ausgewählte Projekte, Kurzvorstellung und Einladung zum Kontakt. */
@@ -30,7 +31,7 @@ export function LandingPage({ projects = defaultProjects, onContact }: LandingPa
             <Button variant="outline" onPress={onContact}>Kontakt</Button>
           </div>
         </div>
-        <ImageFrame ratio="16:9" alt="Vorschau eines Projekts" />
+        <ImageFrame ratio="16:9" src={sampleHero} alt="Abstrakte Waldlandschaft mit Hügeln und Tannen" />
       </section>
 
       <section id="projekte" className="cp-template__section" aria-labelledby="tpl-projekte">

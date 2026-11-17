@@ -1,6 +1,7 @@
 import { SiteFrame } from './SiteFrame';
 import { Button } from '../components/Button/Button';
 import { ImageFrame } from '../components/ImageFrame/ImageFrame';
+import { sampleHero, sampleCanopy, sampleLichtung } from './sampleImages';
 
 export interface ProjectDetailProps {
   category?: string;
@@ -44,7 +45,7 @@ export function ProjectDetail({
             ))}
           </dl>
         </header>
-        <div className="cp-template__section cp-tpl-tight"><ImageFrame ratio="16:9" alt="Hauptbild des Projekts" /></div>
+        <div className="cp-template__section cp-tpl-tight"><ImageFrame ratio="16:9" src={sampleHero} alt="Hauptbild des Projekts" /></div>
         {sections.map((s) => (
           <section key={s.heading} className="cp-template__section" aria-label={s.heading}>
             <div className="cp-tpl-prose">
@@ -55,8 +56,8 @@ export function ProjectDetail({
         ))}
         <section className="cp-template__section" aria-label="Galerie">
           <div className="cp-tpl-grid cp-tpl-grid--2">
-            <ImageFrame ratio="4:3" alt="Detailansicht 1" />
-            <ImageFrame ratio="4:3" alt="Detailansicht 2" />
+            <ImageFrame ratio="4:3" src={sampleCanopy} alt="Detailansicht 1" />
+            <ImageFrame ratio="4:3" src={sampleLichtung} alt="Detailansicht 2" />
           </div>
         </section>
       </article>
