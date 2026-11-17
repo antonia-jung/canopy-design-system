@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { tokens } from '../../tokens/tokens.generated';
 import { useBlob } from '../../motion/useBlob';
 import { Page, Section, Code } from './helpers';
@@ -46,23 +46,6 @@ const Track = ({ duration, easing, label, note }: { duration: string; easing: st
         />
       </button>
     </div>
-  );
-};
-
-declare const __CANOPY_BUILD__: string;
-
-const Status = () => {
-  const [reduced, setReduced] = useState<boolean | null>(null);
-  useEffect(() => {
-    const read = () => setReduced(getComputedStyle(document.documentElement).getPropertyValue('--cp-motion-reduced').trim() === '1');
-    read();
-    const id = setInterval(read, 500);
-    return () => clearInterval(id);
-  }, []);
-  return (
-    <p className="cp-text-caption" style={{ margin: 0, color: 'var(--cp-text-caption)' }}>
-      Stand {typeof __CANOPY_BUILD__ === 'string' ? __CANOPY_BUILD__ : 'lokal'} · Bewegung {reduced === null ? '…' : reduced ? 'reduziert (Blob gleitet nur)' : 'voll'}
-    </p>
   );
 };
 
@@ -137,7 +120,6 @@ export const TransitionStyles: StoryObj = {
               Im Code bewegen zwei Federn die Kanten: Die vordere zieht sofort los, die hintere haftet kurz und schnappt hinterher. Die Dicke folgt der Dehnung, am Ziel federt der Blob leicht aus. Ein neuer Klick setzt nahtlos an der aktuellen Position an. Baustein <Code>useBlob</Code>, Einstellungen in <Code>blobDefaults</Code>. In Figma ist dieselbe Bewegung mit den Tokens Duration/stretch, snap und settle angenähert.
             </span>
             <BlobDemo />
-            <Status />
           </div>
         </div>
       </Section>
