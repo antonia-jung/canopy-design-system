@@ -6,6 +6,12 @@ Entworfen in Figma, umgesetzt mit React, TypeScript und [React Aria](https://rea
 
 **Storybook:** https://antonia-jung.github.io/canopy-design-system/
 
+![Landing Page Template, Light](docs/screenshots/landing-light.png)
+
+| Landing Page (Dark) | Data Page | Login (Dark) |
+| --- | --- | --- |
+| ![Landing Page Dark](docs/screenshots/landing-dark.png) | ![Data Page](docs/screenshots/data-page.png) | ![Login Dark](docs/screenshots/login-dark.png) |
+
 ## Bausteine
 
 Das System folgt Atomic Design:
