@@ -4,18 +4,16 @@
   font-family: var(--cp-font-family-body), system-ui, sans-serif; font-size: var(--cp-font-size-caption); line-height: 16px;
   display: flex; flex-direction: column; gap: 4px;
 }
+.cp-tooltip__arrow { position: absolute; }
 .cp-tooltip[data-detailed] { padding: 12px 16px; max-width: 280px; }
 .cp-tooltip__title { font-size: var(--cp-font-size-paragraph-small); font-weight: 600; line-height: 20px; }
 .cp-tooltip__text { opacity: 0.9; }
 .cp-tooltip__arrow svg { display: block; fill: var(--cp-surface-action); }
-.cp-tooltip[data-placement='top'] .cp-tooltip__arrow { position: absolute; bottom: 100%; left: 50%; margin-left: -9px; margin-bottom: -1px; transform: none; }
-.cp-tooltip[data-placement='top'] .cp-tooltip__arrow svg { transform: rotate(0deg); }
-.cp-tooltip[data-placement='bottom'] .cp-tooltip__arrow { position: absolute; top: 100%; left: 50%; margin-left: -9px; margin-top: -1px; }
-.cp-tooltip[data-placement='bottom'] .cp-tooltip__arrow svg { transform: rotate(180deg); }
-.cp-tooltip[data-placement='left'] .cp-tooltip__arrow { position: absolute; left: 100%; top: 50%; margin-top: -4px; margin-left: -5px; }
-.cp-tooltip[data-placement='left'] .cp-tooltip__arrow svg { transform: rotate(-90deg); }
-.cp-tooltip[data-placement='right'] .cp-tooltip__arrow { position: absolute; right: 100%; top: 50%; margin-top: -4px; margin-right: -5px; }
-.cp-tooltip[data-placement='right'] .cp-tooltip__arrow svg { transform: rotate(90deg); }
+/* RAC setzt die Position des Pfeils selbst, hier nur Richtung: Spitze zeigt zum Auslöser, Fuß überlappt den Rand um 1px */
+.cp-tooltip[data-placement='top'] .cp-tooltip__arrow { top: 100%; margin-top: -1px; }
+.cp-tooltip[data-placement='bottom'] .cp-tooltip__arrow { bottom: 100%; margin-bottom: -1px; }
+.cp-tooltip[data-placement='left'] .cp-tooltip__arrow { left: 100%; margin-left: -1px; }
+.cp-tooltip[data-placement='right'] .cp-tooltip__arrow { right: 100%; margin-right: -1px; }
 .cp-tooltip[data-entering] { animation: cp-tip var(--cp-duration-fast) var(--cp-easing-standard); }
 @keyframes cp-tip { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .cp-tooltip[data-entering] { animation: none; } }

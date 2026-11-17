@@ -21,10 +21,20 @@ export function Tooltip({ children, label, title, content, placement = 'top', de
   return (
     <TooltipTrigger delay={delay} closeDelay={0}>
       {children}
-      <AriaTooltip placement={placement} offset={8} className="cp-tooltip" data-detailed={detailed || undefined}>
-        <OverlayArrow className="cp-tooltip__arrow">
-          <svg width="18" height="8" viewBox="0 0 18 8" aria-hidden="true"><path d="M0 0 L9 8 L18 0 Z" /></svg>
-        </OverlayArrow>
+      <AriaTooltip placement={placement} offset={12} className="cp-tooltip" data-detailed={detailed || undefined}>
+        {({ placement: p }) => (
+          <>
+            <OverlayArrow className="cp-tooltip__arrow">
+              {p === 'left' || p === 'right' ? (
+                <svg width="8" height="18" viewBox="0 0 8 18" aria-hidden="true">
+                  <path d={p === 'left' ? 'M0 0 L8 9 L0 18 Z' : 'M8 0 L0 9 L8 18 Z'} />
+                </svg>
+              ) : (
+                <svg width="18" height="8" viewBox="0 0 18 8" aria-hidden="true">
+                  <path d={p === 'top' ? 'M0 0 L9 8 L18 0 Z' : 'M0 8 L9 0 L18 8 Z'} />
+                </svg>
+              )}
+            </OverlayArrow>
         {detailed ? (
           <>
             {title && <strong className="cp-tooltip__title">{title}</strong>}
@@ -32,6 +42,8 @@ export function Tooltip({ children, label, title, content, placement = 'top', de
           </>
         ) : (
           label
+        )}
+          </>
         )}
       </AriaTooltip>
     </TooltipTrigger>
