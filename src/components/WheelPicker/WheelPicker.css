@@ -46,3 +46,12 @@
 .cp-wheel__row[data-dist='1'] { opacity: 0.6; }
 .cp-wheel__row[data-dist='2'] { opacity: 0.3; }
 .cp-wheel__row[data-dist='3'] { opacity: 0.12; }
+
+/* Kleiner Bounce, wenn eine Zeile zur gewählten wird */
+.cp-wheel__row[data-dist='0'] { animation: cp-wheel-bounce var(--cp-duration-slow) var(--cp-easing-bounce-subtle); }
+@keyframes cp-wheel-bounce {
+  0% { transform: scale(0.9); }
+  55% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) { .cp-wheel__row[data-dist='0'] { animation: none; } }
